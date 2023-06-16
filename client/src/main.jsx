@@ -1,13 +1,16 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM, { findDOMNode } from "react-dom";
+import { ThemeProvider } from "./context/ThemeContext";
 
 import App from "./App";
 import { TransactionsProvider } from "./context/TransactionContext";
 import "./index.css";
 
 ReactDOM.render(
-  <TransactionsProvider>
-    <App />
-  </TransactionsProvider>,
-  document.getElementById("root"),
+  <ThemeProvider>
+    <TransactionsProvider>
+      <App />
+    </TransactionsProvider>
+  </ThemeProvider>,
+  document.getElementById("root")
 );

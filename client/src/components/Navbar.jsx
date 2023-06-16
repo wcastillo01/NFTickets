@@ -1,6 +1,8 @@
 import React from "react";
 import { HiMenuAlt4 } from "react-icons/hi";
 import { AiOutlineClose } from "react-icons/ai";
+import { useContext } from "react";
+import { ThemeContext } from "../context/ThemeContext";
 
 import logo from "../../images/logo.png";
 
@@ -10,9 +12,12 @@ const NavBarItem = ({ title, classprops }) => (
 
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = React.useState(false);
+  const { theme, toggleTheme } = useContext(ThemeContext);
 
   return (
-    <nav className="w-full flex md:justify-center justify-between items-center p-4">
+    <nav
+      className={`w-full flex md:justify-center justify-between items-center p-4`}
+    >
       <div className="md:flex-[0.5] flex-initial justify-center items-center">
         <img src={logo} alt="logo" className="w-32 cursor-pointer" />
       </div>
@@ -25,6 +30,9 @@ const Navbar = () => {
         </li>
       </ul>
       <div className="flex relative">
+        <button onClick={toggleTheme} className="UI-Toggle">
+          Change Theme
+        </button>
         {!toggleMenu && (
           <HiMenuAlt4
             fontSize={28}
