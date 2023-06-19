@@ -12,12 +12,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.light {
-  background-color: #a099ff;
-}
-.dark {
-  background-color: aqua;
-}
+
 .gradient-bg-welcome-light {
   background-image: linear-gradient(
     to left bottom,
@@ -143,8 +138,9 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-.UI-Toggle {
-  color: white;
+.ui-toggle {
+  height: 25px;
+  width: 25px;
 }
 
 @tailwind base;

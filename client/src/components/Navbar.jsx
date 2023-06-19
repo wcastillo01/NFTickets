@@ -74,11 +74,8 @@ const Navbar = () => {
           onClick={handleImageButtonClick}
           style={{ color: isClicked ? "white" : "inherit" }}
         >
-          <img
-            src={isClicked ? Luna : Sol}
-            alt="Toggle Button"
-            className="w-10 h-10"
-            style={{ filter: isClicked ? "brightness(0) invert(1)" : "none" }}
+          <img src={isClicked ? Luna : Sol} alt="Toggle Button" className="ui-toggle" 
+          style={{filter: isClicked ? "invert(1)" : "invert(1)" }}
           />
         </button>
       </div>
