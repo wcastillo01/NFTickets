@@ -1,18 +1,24 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import { HiMenuAlt4 } from "react-icons/hi";
 import { AiOutlineClose } from "react-icons/ai";
-import { useContext } from "react";
 import { ThemeContext } from "../context/ThemeContext";
-
 import logo from "../../images/logo.png";
+import Sol from "../../images/Sol.png";
+import Luna from "../../images/Luna.png";
 
 const NavBarItem = ({ title, classprops }) => (
   <li className={`mx-4 cursor-pointer ${classprops}`}>{title}</li>
 );
 
 const Navbar = () => {
-  const [toggleMenu, setToggleMenu] = React.useState(false);
+  const [toggleMenu, setToggleMenu] = useState(false);
   const { theme, toggleTheme } = useContext(ThemeContext);
+  const [isClicked, setIsClicked] = useState(false);
+
+  const handleImageButtonClick = () => {
+    setIsClicked(!isClicked);
+    toggleTheme();
+  };
 
   return (
     <nav
@@ -30,9 +36,6 @@ const Navbar = () => {
         </li>
       </ul>
       <div className="flex relative">
-        <button onClick={toggleTheme} className="UI-Toggle">
-          Change Theme
-        </button>
         {!toggleMenu && (
           <HiMenuAlt4
             fontSize={28}
@@ -66,6 +69,18 @@ const Navbar = () => {
             )}
           </ul>
         )}
+        <button
+          className="image-button"
+          onClick={handleImageButtonClick}
+          style={{ color: isClicked ? "white" : "inherit" }}
+        >
+          <img
+            src={isClicked ? Luna : Sol}
+            alt="Toggle Button"
+            className="w-10 h-10"
+            style={{ filter: isClicked ? "brightness(0) invert(1)" : "none" }}
+          />
+        </button>
       </div>
     </nav>
   );
