@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { HiMenuAlt4 } from "react-icons/hi";
 import { AiOutlineClose } from "react-icons/ai";
 import { ThemeContext } from "../context/ThemeContext";
-import logo from "../../images/logo.png";
+import logo from "../../images/logo.svg";
 import Sol from "../../images/Sol.png";
 import Luna from "../../images/Luna.png";
 
@@ -74,7 +74,7 @@ const Navbar = () => {
           onClick={handleImageButtonClick}
           style={{ color: isClicked ? "white" : "inherit" }}
         >
-          <img src={isClicked ? Luna : Sol} alt="Toggle Button" className="ui-toggle" 
+          <img src={isClicked ? Sol : Luna} alt="Toggle Button" className="ui-toggle" 
           style={{filter: isClicked ? "invert(1)" : "invert(1)" }}
           />
         </button>
