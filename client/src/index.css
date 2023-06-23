@@ -11,6 +11,14 @@ body {
   font-family: "Open Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  background-image: linear-gradient(to left top,
+        #94bbe9,
+        #b9c1e9,
+        #d4c9e6,
+        #e4d4e4,
+        #ece2e7
+  );
 }
 
 .gradient-bg-welcome-light {

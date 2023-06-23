@@ -4,11 +4,15 @@ import { AiOutlineClose } from "react-icons/ai";
 import { ThemeContext } from "../context/ThemeContext";
 import logo from "../../images/logo.svg";
 import Sol from "../../images/Sol.png";
-import Luna from "../../images/Luna.png";
+import Luna from "../../images/Luna.png"
+import {Link} from "react-router-dom"
 
-const NavBarItem = ({ title, classprops }) => (
-  <li className={`mx-4 cursor-pointer ${classprops}`}>{title}</li>
-);
+
+const NavBarItem = ({ title, classprops, path }) => {
+  return <Link to={path} className={`mx-4 cursor-pointer ${classprops}`}>{title}</Link>
+
+
+};
 
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
@@ -28,8 +32,25 @@ const Navbar = () => {
         <img src={logo} alt="logo" className="w-32 cursor-pointer" />
       </div>
       <ul className="text-white md:flex hidden list-none flex-row justify-between items-center flex-initial">
-        {["Home", "Publish event", "Support", "Register"].map((item, index) => (
-          <NavBarItem key={item + index} title={item} />
+        {[{label: "Home",
+            path: "/"}, 
+          {
+            label: "Publish event",
+            path: "/publish-event"
+          },
+          {
+            label: "FAQ",
+            path: "/"
+          },
+          {
+            label: "Support",
+            path: "/"
+          },
+          {
+            label: "Register",
+            path: "/"
+        }].map((item, index) => (
+          <NavBarItem key={item.label + index} title={item.label} path={item.path}/>
         ))}
         <li className="bg-[#2952e3] py-2 px-7 mx-4 rounded-full cursor-pointer hover:bg-[#2546bd]">
           Login
