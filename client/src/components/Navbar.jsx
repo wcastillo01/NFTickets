@@ -40,11 +40,11 @@ const Navbar = () => {
           },
           {
             label: "FAQ",
-            path: "/"
+            path: "/faq"
           },
           {
             label: "Support",
-            path: "/"
+            path: "/support"
           },
           {
             label: "Register",
