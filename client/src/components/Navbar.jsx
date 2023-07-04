@@ -4,14 +4,15 @@ import { AiOutlineClose } from "react-icons/ai";
 import { ThemeContext } from "../context/ThemeContext";
 import logo from "../../images/logo.svg";
 import Sol from "../../images/Sol.png";
-import Luna from "../../images/Luna.png"
-import {Link} from "react-router-dom"
-
+import Luna from "../../images/Luna.png";
+import { Link } from "react-router-dom";
 
 const NavBarItem = ({ title, classprops, path }) => {
-  return <Link to={path} className={`mx-4 cursor-pointer ${classprops}`}>{title}</Link>
-
-
+  return (
+    <Link to={path} className={`mx-4 cursor-pointer ${classprops}`}>
+      {title}
+    </Link>
+  );
 };
 
 const Navbar = () => {
@@ -32,25 +33,30 @@ const Navbar = () => {
         <img src={logo} alt="logo" className="w-32 cursor-pointer" />
       </div>
       <ul className="text-white md:flex hidden list-none flex-row justify-between items-center flex-initial">
-        {[{label: "Home",
-            path: "/"}, 
+        {[
+          { label: "Home", path: "/" },
           {
             label: "Publish event",
-            path: "/publish-event"
+            path: "/publish-event",
           },
           {
             label: "FAQ",
-            path: "/faq"
+            path: "/faq",
           },
           {
             label: "Support",
-            path: "/support"
+            path: "/support",
           },
           {
             label: "Register",
-            path: "/"
-        }].map((item, index) => (
-          <NavBarItem key={item.label + index} title={item.label} path={item.path}/>
+            path: "/",
+          },
+        ].map((item, index) => (
+          <NavBarItem
+            key={item.label + index}
+            title={item.label}
+            path={item.path}
+          />
         ))}
         <li className="bg-[#2952e3] py-2 px-7 mx-4 rounded-full cursor-pointer hover:bg-[#2546bd]">
           Login
@@ -95,8 +101,11 @@ const Navbar = () => {
           onClick={handleImageButtonClick}
           style={{ color: isClicked ? "white" : "inherit" }}
         >
-          <img src={isClicked ? Sol : Luna} alt="Toggle Button" className="ui-toggle" 
-          style={{filter: isClicked ? "invert(1)" : "invert(1)" }}
+          <img
+            src={isClicked ? Sol : Luna}
+            alt="Toggle Button"
+            className="ui-toggle"
+            style={{ filter: isClicked ? "invert(1)" : "invert(1)" }}
           />
         </button>
       </div>
