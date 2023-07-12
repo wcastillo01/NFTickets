@@ -37,7 +37,7 @@ const SignupForm = () => {
         className="bg-white w-full max-w-md bg-blue-glassmorphism p-6 rounded-lg border shadow-lg"
         style={{ marginTop: "-150px" }}
       >
-        <h2 className="text-2xl font-bold mb-8">Crear evento</h2>
+        <h2 className="text-2xl font-bold mb-8">Crear cuenta</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4 flex items-center">
             <RiMailLine className="mr-2 text-xl" />

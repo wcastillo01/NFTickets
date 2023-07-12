@@ -3,7 +3,6 @@ import React from "react";
 import logo from "../../images/logo.svg";
 import { ThemeContext } from "../context/ThemeContext";
 import { useContext } from "react";
-
 const Footer = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
   return (

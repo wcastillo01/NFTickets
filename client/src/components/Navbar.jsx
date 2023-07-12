@@ -6,6 +6,7 @@ import logo from "../../images/logo.svg";
 import Sol from "../../images/Sol.png";
 import Luna from "../../images/Luna.png";
 import { Link } from "react-router-dom";
+import { TransactionContext } from "../context/TransactionContext";
 
 const NavBarItem = ({ title, classprops, path }) => {
   return (
@@ -19,6 +20,8 @@ const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
   const { theme, toggleTheme } = useContext(ThemeContext);
   const [isClicked, setIsClicked] = useState(false);
+  const { currentAccount } = useContext(TransactionContext);
+  const { connectWallet } = useContext(TransactionContext);
 
   const handleImageButtonClick = () => {
     setIsClicked(!isClicked);
@@ -58,9 +61,21 @@ const Navbar = () => {
             path={item.path}
           />
         ))}
-        <li className="bg-[#2952e3] py-2 px-7 mx-4 rounded-full cursor-pointer hover:bg-[#2546bd]">
-          Login
-        </li>
+        {currentAccount ? (
+          <img
+            src={`https://avatars.dicebear.com/api/bottts/${currentAccount}.svg`}
+            alt="Metamask Profile"
+            className="w-8 h-8 rounded-full cursor-pointer"
+            onClick={handleImageButtonClick}
+          />
+        ) : (
+          <li
+            className="bg-[#2952e3] py-2 px-7 mx-4 rounded-full cursor-pointer hover:bg-[#2546bd]"
+            onClick={connectWallet}
+          >
+            Login
+          </li>
+        )}
       </ul>
       <div className="flex relative">
         {!toggleMenu && (
@@ -96,18 +111,6 @@ const Navbar = () => {
             )}
           </ul>
         )}
-        <button
-          className="image-button"
-          onClick={handleImageButtonClick}
-          style={{ color: isClicked ? "white" : "inherit" }}
-        >
-          <img
-            src={isClicked ? Sol : Luna}
-            alt="Toggle Button"
-            className="ui-toggle"
-            style={{ filter: isClicked ? "invert(1)" : "invert(1)" }}
-          />
-        </button>
       </div>
     </nav>
   );
