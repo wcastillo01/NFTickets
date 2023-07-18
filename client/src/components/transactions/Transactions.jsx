@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
 import "./Transactions.css"
 
 
@@ -17,7 +19,7 @@ const Transactions = () => {
 
       try {
         const response = await fetch(
-          "https://api.opensea.io/v2/chain/ethereum/contract/0x009c5b7fF119972e3437b51C4F94ADDB8DBB2bCd/nfts",
+          "https://api.opensea.io/v2/chain/ethereum/contract/0x46541c7c9904112E5e62847BeBb148051F71bAFA/nfts",
           options
         );
         const data = await response.json();
@@ -30,17 +32,37 @@ const Transactions = () => {
     fetchData();
   }, []);
 
-  // Rest of your component code
+  const [value, setValue] = useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
   return (
-    <div style={{ display: "flex", flexWrap: "wrap" }}>
-      {nfts.map((nft, index) => (
-        <div key={nft.identifier} style={{ flex: "0 0 25%", padding: "10px" }}>
-          <h3 className="NftName">{nft.name}</h3>
-          <p>{nft.description}</p>
-          <img src={nft.image_url} alt={nft.name} />
+    <div>
+
+      <div className="GenreTabs">
+        <Tabs value={value} onChange={handleChange} centered>
+          <Tab label="Todos" />
+          <Tab label="Comedia" />
+          <Tab label="Deporte" />
+        </Tabs>
+        {value === 0 && <div>Content for Windows tab</div>}
+        {value === 1 && <div>Content for Linux tab</div>}
+        {value === 2 && <div>Content for Mac tab</div>}
+      </div>
+      
+      <div className="card-display">
+          {nfts.map((nft, index) => (
+           <div className="card">
+              <div className="container" key={nft.identifier}>
+                <h3 className="NftName">{nft.name}</h3>
+                <p className="NftDescription">{nft.description}</p>
+                <img className="NftImage" src={nft.image_url} alt={nft.name} />
+              </div>
+           </div>
+          ))}
         </div>
-      ))}
     </div>
   );
 };

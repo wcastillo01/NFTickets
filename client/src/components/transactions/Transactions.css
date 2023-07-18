@@ -2,3 +2,54 @@
     font-size: 20px;
     font-weight: bolder;
 }
+
+.NftDescription{
+    font-size: 12px;
+    width: 300px;
+    margin-bottom: 9px;
+    overflow: hidden;
+    line-height: 1.2em; /* Limita el texto a 3 lineas */
+    height: 3.6em;
+            
+}
+
+.NftImage{
+    width: 300px;
+    height: 300px;
+    margin-bottom: 5px;
+
+}
+
+.card{
+    margin: 10px;
+}
+
+.card-display{
+    display: flex;  
+    flex-wrap: wrap;
+    justify-content: center;
+
+    padding-left: 12%;
+    padding-right: 12%;
+    margin: auto;
+}
+
+.container {
+   
+    flex: 0 0 25%;
+    transition: 0.3s;
+    border-radius: 5px; 
+    background-color: white;
+    margin-bottom: 10px;
+    padding: 2px 15px 5px;
+    height: 450px;
+    
+}
+
+.container:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.GenreTabs{
+    color: white;
+}
