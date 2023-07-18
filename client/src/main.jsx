@@ -8,12 +8,12 @@ import { TransactionsProvider } from "./context/TransactionContext";
 import "./index.css";
 
 ReactDOM.render(
-<BrowserRouter>
-    <ThemeProvider>
-      <TransactionsProvider>
-        <App />
-      </TransactionsProvider>
-    </ThemeProvider>
-  </BrowserRouter>,
+  <BrowserRouter>
+      <ThemeProvider>
+        <TransactionsProvider>
+          <App />
+        </TransactionsProvider>
+      </ThemeProvider>
+    </BrowserRouter>,
   document.getElementById("root")
 );
