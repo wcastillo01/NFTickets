@@ -39,7 +39,7 @@ const Navbar = () => {
         {[
           { label: "Home", path: "/" },
           {
-            label: "Publish event",
+            label: "Publicar evento",
             path: "/publish-event",
           },
           {
@@ -47,12 +47,8 @@ const Navbar = () => {
             path: "/faq",
           },
           {
-            label: "Support",
+            label: "Soporte",
             path: "/support",
-          },
-          {
-            label: "Register",
-            path: "/",
           },
         ].map((item, index) => (
           <NavBarItem
