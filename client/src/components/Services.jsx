@@ -31,9 +31,9 @@ const Services = () => {
       <div className="flex mf:flex-row flex-col items-center justify-between md:p-20 py-12 px-4">
         <div className="flex-1 flex flex-col justify-start items-start">
           <h1 className="text-white text-3xl sm:text-5xl py-2 font-bold ">
-            Services that we
+            Servicios que
             <br />
-            continue to improve
+            seguimos mejorando
           </h1>
           <p className="text-left my-2 text-white font-light md:w-9/12 w-11/12 text-base">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
@@ -45,21 +45,30 @@ const Services = () => {
         <div className="flex-1 flex flex-col justify-start items-center">
           <ServiceCard
             color="bg-[#2952E3]"
-            title="Security gurantee"
+            title="Seguridad garantizada"
             icon={<BsShieldFillCheck fontSize={21} className="text-white" />}
-            subtitle="Security is guranteed. We always maintain privacy and maintain the quality of our products"
+            subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
+            aliquam malesuada lorem, vitae volutpat est facilisis in. Fusce
+            ullamcorper semper efficitur."
+            style={{ width: "300px" }}
           />
           <ServiceCard
             color="bg-[#8945F8]"
-            title="Best exchange rates"
+            title="Mejores transacciones"
             icon={<BiSearchAlt fontSize={21} className="text-white" />}
-            subtitle="Security is guranteed. We always maintain privacy and maintain the quality of our products"
+            subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
+            aliquam malesuada lorem, vitae volutpat est facilisis in. Fusce
+            ullamcorper semper efficitur."
+            style={{ width: "300px" }}
           />
           <ServiceCard
             color="bg-[#F84550]"
-            title="Fastest transactions"
+            title="Transacciones más rápidas"
             icon={<RiHeart2Fill fontSize={21} className="text-white" />}
-            subtitle="Security is guranteed. We always maintain privacy and maintain the quality of our products"
+            subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
+            aliquam malesuada lorem, vitae volutpat est facilisis in. Fusce
+            ullamcorper semper efficitur."
+            style={{ width: "300px" }}
           />
         </div>
       </div>
