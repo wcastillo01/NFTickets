@@ -1,0 +1,8 @@
+{
+    "name": "Pelicula Oppenheimer",
+    "description": "Esto es una descripcion de prueba para la pelicula de Oppenheimer.",
+    "image": "https://ladailypost.com/wp-content/uploads/2023/06/Oppenheimer-Festival_SALA.jpg",
+    "traits": {
+        "type": "Pelicula"
+    }
+}
