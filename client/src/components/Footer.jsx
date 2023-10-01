@@ -11,7 +11,7 @@ const Footer = () => {
     >
       <div className="w-full flex sm:flex-row flex-col justify-between items-center my-4">
         <div className="flex flex-[0.5] justify-center items-center">
-          <img src={logo} alt="logo" className="w-32" />
+    
         </div>
         <div className="flex flex-1 justify-evenly items-center flex-wrap sm:mt-0 mt-5 w-full">
           <p className="text-white text-base text-center mx-2 cursor-pointer"></p>
@@ -22,6 +22,7 @@ const Footer = () => {
       </div>
 
       <div className="flex justify-center items-center flex-col mt-5">
+        <img src={logo} alt="logo" className="w-12" />
         <p className="text-white text-sm text-center">
           Unete en esta nueva tecnologia mas segura que las otras!
         </p>

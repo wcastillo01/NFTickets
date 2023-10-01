@@ -33,15 +33,13 @@ const Navbar = () => {
       className={`w-full flex md:justify-center justify-between items-center p-4`}
     >
       <div className="md:flex-[0.5] flex-initial justify-center items-center">
+        <Link to="/">
         <img src={logo} alt="logo" className="w-32 cursor-pointer" />
+        </Link>
       </div>
       <ul className="text-white md:flex hidden list-none flex-row justify-between items-center flex-initial">
         {[
           { label: "Home", path: "/" },
-          {
-            label: "Publicar evento",
-            path: "/publish-event",
-          },
           {
             label: "FAQ",
             path: "/faq",
@@ -57,6 +55,13 @@ const Navbar = () => {
             path={item.path}
           />
         ))}
+        <Link to="/publish-event">
+        <li
+          className="bg-[#2952e3] py-2 px-7 mx-4 rounded-full cursor-pointer hover:bg-[#2546bd]"
+        >
+          Publicar Evento
+        </li>
+        </Link>
         {currentAccount ? (
           <img
             src={`https://avatars.dicebear.com/api/bottts/${currentAccount}.svg`}

@@ -1,0 +1,38 @@
+/* NO UTILIZAR NOMBRES DE TRANSACTION.CSS SE VA A OVERLAPEAR */
+
+.Name {
+    font-size: 40px;
+    font-weight: 750;
+    margin-left: 10px
+}
+
+.Image {
+    width: 600px;
+    height: 600px;
+    margin: 0 auto;
+}
+.Description {
+    width: 300px;
+    margin: 12px 10px;
+    overflow: hidden;
+    /* Limita el texto a 3 lineas */
+}
+
+.Creator{
+    margin-left: 10px
+}
+
+.Quantity {
+    margin-left: 10px
+}
+
+.Tab {
+    margin: 0 auto;
+    width: 800px;
+    height: 800px;
+    font-weight: lighter;
+    background-color: white;
+    border-radius: 1%;
+}
+
+

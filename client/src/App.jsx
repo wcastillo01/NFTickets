@@ -5,6 +5,7 @@ import Publish from "./pages/Publish";
 import FAQ from "./pages/FAQ";
 import Support from "./pages/Support";
 import Member from "./pages/Member";
+import Details from "./components/details/Details";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Route path="/member-register" element={<Member />} />
         <Route path="/faq" element={<FAQ />} />
         <Route path="/support" element={<Support />} />
+        <Route path="/nft/:id" element={<Details/>} />
       </Route>
     </Routes>
   );

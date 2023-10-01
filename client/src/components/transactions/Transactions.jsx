@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import "./Transactions.css";
+import { Link } from "react-router-dom";
 
 const Transactions = () => {
   const [nfts, setNfts] = useState([]);
@@ -43,6 +44,8 @@ const Transactions = () => {
         <div className="GenreTabs">
           <Tabs value={value} onChange={handleChange} centered>
             <Tab label="Todos" />
+            <Tab label="Musica" />
+            <Tab label="Cine" />
             <Tab label="Comedia" />
             <Tab label="Deporte" />
           </Tabs>
@@ -55,10 +58,13 @@ const Transactions = () => {
       <div className="card-display">
         {nfts.map((nft, index) => (
           <div className="card">
-            <div className="container" key={nft.identifier}>
-              <h3 className="NftName">{nft.name}</h3>
-              <p className="NftDescription">{nft.description}</p>
-              <img className="NftImage" src={nft.image_url} alt={nft.name} />
+            <div className="container" key={nft?.identifier}>
+            <Link to={`/nft/${nft?.identifier}`}>
+              <h3 className="NftName">{nft?.name}</h3>
+              <p className="NftDescription">{nft?.description}</p>
+              <img className="NftImage" src={nft?.image_url} alt={nft?.name} />
+           </Link>
+              {/* <button className="bg-[#2952e3] py-2 px-7 mx-4 rounded-full cursor-pointer hover:bg-[#2546bd]" onClick={() => alert("gracias")}> Buy </button> */}
             </div>
           </div>
         ))}

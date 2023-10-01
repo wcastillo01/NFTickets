@@ -10,8 +10,8 @@ export default function Home() {
         <div className={`gradient-bg-welcome-${theme}`}>
             <Welcome />
         </div>
-        <Services />
         <Transactions />
+        <Services />
         <Footer />
     </div>
   )
