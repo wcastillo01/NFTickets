@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
+import { Tabs, Tab } from '@mui/material';
 import "./Transactions.css";
 import { Link } from "react-router-dom";
 
@@ -40,7 +39,7 @@ const Transactions = () => {
 
   return (
     <div>
-      <div>
+        <div>
         <div className="GenreTabs">
           <Tabs value={value} onChange={handleChange} centered>
             <Tab label="Todos" />
@@ -50,10 +49,12 @@ const Transactions = () => {
             <Tab label="Deporte" />
           </Tabs>
         </div>
-        {/* {value === 0 && <div>Content for Windows tab</div>}
+        {value === 0 && <div>Content for Windows tab</div>}
         {value === 1 && <div>Content for Linux tab</div>}
-        {value === 2 && <div>Content for Mac tab</div>} */}
-      </div>
+        {value === 2 && <div>Content for Mac tab</div>}
+    </div>
+    
+
 
       <div className="card-display">
         {nfts.map((nft, index) => (

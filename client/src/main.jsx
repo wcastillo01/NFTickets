@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM, { findDOMNode } from "react-dom";
+import ReactDOM from 'react-dom/client';
 import { ThemeProvider } from "./context/ThemeContext";
 import {BrowserRouter} from "react-router-dom"
 
@@ -7,13 +7,13 @@ import App from "./App";
 import { TransactionsProvider } from "./context/TransactionContext";
 import "./index.css";
 
-ReactDOM.render(
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
   <BrowserRouter>
-      <ThemeProvider>
-        <TransactionsProvider>
-          <App />
-        </TransactionsProvider>
-      </ThemeProvider>
-    </BrowserRouter>,
-  document.getElementById("root")
+    <ThemeProvider>
+      <TransactionsProvider>
+        <App />
+      </TransactionsProvider>
+    </ThemeProvider>
+  </BrowserRouter>
 );

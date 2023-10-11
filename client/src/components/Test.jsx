@@ -1,11 +1,11 @@
 import { useMintNFT, useContract, Web3Button } from "@thirdweb-dev/react";
 import React, { useState } from 'react';
 import { TextField, Button, Container } from "@mui/material"
-
+ 
 // Your smart contract address
 const contractAddress = "0x04fC8b9a53daD619761ffCBC0bfc908b3C865491";
 
-function Test() {
+function Test () {
   const { contract } = useContract(contractAddress);
   const { mutateAsync: mintNft, isLoading, error } = useMintNFT(contract);
 
@@ -29,7 +29,7 @@ function Test() {
     // Do something with the form data, e.g., send it to an API
     console.log(formData);
   };
-
+    
   return (
 
     <div>
@@ -77,7 +77,7 @@ function Test() {
               </div>
               <div className="mb-4 flex items-center">
                 <input
-                  type="number"
+                 type="number"
                   name="supply"
                   value={formData.supply}
                   onChange={handleChange}
@@ -97,7 +97,7 @@ function Test() {
                 />
                 <label className="text-sm">Acepto los términos y condiciones</label>
               </div>
-
+              
               <button>
                 <Web3Button
                   contractAddress={contractAddress}
@@ -118,7 +118,8 @@ function Test() {
             </form>
           </div>
         </div>
-      </div>
+       </div>
+  
     </div>
   );
 }

@@ -21,7 +21,7 @@ export default function Details() {
 
             try {
                 const response = await fetch(
-                    `https://testnets-api.opensea.io/v2/chain/sepolia/contract/0xA14863622A070b26b58040C771Fb7dF782b939bf/nfts/${id}`,
+                    `https://testnets-api.opensea.io/v2/chain/goerli/contract/0x04fC8b9a53daD619761ffCBC0bfc908b3C865491/nfts/${id}`,
                     options
                 );
                 const data = await response.json();
