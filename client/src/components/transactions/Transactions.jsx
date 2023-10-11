@@ -39,7 +39,7 @@ const Transactions = () => {
 
   return (
     <div>
-        <div>
+        {/* <div>
         <div className="GenreTabs">
           <Tabs value={value} onChange={handleChange} centered>
             <Tab label="Todos" />
@@ -53,7 +53,7 @@ const Transactions = () => {
         {value === 1 && <div>Content for Linux tab</div>}
         {value === 2 && <div>Content for Mac tab</div>}
     </div>
-    
+     */}
 
 
       <div className="card-display">
