@@ -29,7 +29,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav
+      <nav
       className={`w-full flex md:justify-center justify-between items-center p-4`}
     >
       <div className="md:flex-[0.5] flex-initial justify-center items-center">
@@ -40,14 +40,9 @@ const Navbar = () => {
       <ul className="text-white md:flex hidden list-none flex-row justify-between items-center flex-initial">
         {[
           { label: "Home", path: "/" },
-          {
-            label: "FAQ",
-            path: "/faq",
-          },
-          {
-            label: "Soporte",
-            path: "/support",
-          },
+          { label: "Sobre Nosotros", path: "/services",},
+          { label: "FAQ", path: "/faq", },
+          { label: "Soporte", path: "/support", },
         ].map((item, index) => (
           <NavBarItem
             key={item.label + index}

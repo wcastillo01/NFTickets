@@ -45,11 +45,20 @@ export default function Details() {
 
   return (
     <div class="Tab">
-    <h1 class="Name"> {nfts?.name}</h1> 
-    <h1 class="Creator"> <b>Creador:</b> {nfts?.creator}</h1>
-    <span class="Quantity"> <b>Cantidad: </b> {nfts?.owners[0].quantity}</span>
-    <p class="Description"> {nfts?.description}</p>
-    <img class="Image" src={nfts?.image_url}/>
+        <div>
+        <h1 class="Name"> {nfts?.name}</h1> 
+        <img class="Image" src={nfts?.image_url}/>
+        </div>
+
+        <div className="side-tab">
+        <h1 class="Creator"> <b>Creador:</b> {nfts?.creator}</h1>
+        <p class="Description"> <b>Sobre el evento:</b> {nfts?.description}</p>
+        <span class="Quantity"> <b>Cantidad: </b> {nfts?.owners[0].quantity}</span>
+        <br />
+            <div style={{ textAlign: 'center' }}>
+            <button className="buy-button">Buy now</button>
+            </div>
+        </div>
     </div>
   )
 }

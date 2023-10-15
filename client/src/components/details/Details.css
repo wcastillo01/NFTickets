@@ -3,13 +3,16 @@
 .Name {
     font-size: 40px;
     font-weight: 750;
-    margin-left: 10px
+    margin: 10px 30px;
+    
 }
 
 .Image {
-    width: 600px;
-    height: 600px;
-    margin: 0 auto;
+    width: 500px;
+    height: 500px;
+    /* margin: 0 auto; */
+    margin: 0 30px;
+    border-radius: 1%;
 }
 .Description {
     width: 300px;
@@ -28,11 +31,30 @@
 
 .Tab {
     margin: 0 auto;
-    width: 800px;
-    height: 800px;
+    width: 1000px;
+    height: 600px;
     font-weight: lighter;
     background-color: white;
     border-radius: 1%;
+    display: flex;
 }
 
+.side-tab{
+margin-top: 150px;
+}
 
+.buy-button {
+    width: 60%;
+    margin: 90px auto; /* Center the button horizontally */;
+    padding: 12px;
+    background-color:#2952e3;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.buy-button:hover {
+    background-color: #0638e7;
+  }

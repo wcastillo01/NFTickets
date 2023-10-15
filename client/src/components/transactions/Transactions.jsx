@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 const Transactions = () => {
   const [nfts, setNfts] = useState([]);
+  const [selectedTab, setSelectedTab] = useState("all");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,7 +19,7 @@ const Transactions = () => {
 
       try {
         const response = await fetch(
-          "https://testnets-api.opensea.io/v2/chain/sepolia/contract/0xA14863622A070b26b58040C771Fb7dF782b939bf/nfts",
+          "https://testnets-api.opensea.io/v2/chain/goerli/contract/0x04fC8b9a53daD619761ffCBC0bfc908b3C865491/nfts",
           options
         );
         const data = await response.json();
@@ -26,6 +27,19 @@ const Transactions = () => {
       } catch (err) {
         console.error(err);
       }
+    };
+
+    const filterNfts = () => {
+      if (selectedTab === "all") {
+        return nfts;
+      } 
+      else if ("Musica" === selectedTab){
+        console.log("mmg")
+      }
+    };
+  
+    const handleTabClick = (category) => {
+      setSelectedTab(category);
     };
 
     fetchData();
@@ -39,22 +53,25 @@ const Transactions = () => {
 
   return (
     <div>
-        {/* <div>
         <div className="GenreTabs">
-          <Tabs value={value} onChange={handleChange} centered>
-            <Tab label="Todos" />
-            <Tab label="Musica" />
-            <Tab label="Cine" />
-            <Tab label="Comedia" />
-            <Tab label="Deporte" />
-          </Tabs>
+        <div className={`GenreTab ${selectedTab === "all" ? "active" : ""}`} onClick={() => handleTabClick("all")} >
+          Todos
         </div>
-        {value === 0 && <div>Content for Windows tab</div>}
-        {value === 1 && <div>Content for Linux tab</div>}
-        {value === 2 && <div>Content for Mac tab</div>}
-    </div>
-     */}
+        <div className={`GenreTab ${selectedTab === "Musica" ? "active" : "google.com"}`} onClick={() => handleTabClick("Musica")}>
+           Musica
+        </div>
+        <div className={`GenreTab ${selectedTab === "Cine" ? "active" : ""}`} onClick={() => handleTabClick("Cine")}>
+          Cine
+        </div>
+        <div className={`GenreTab ${selectedTab === "Comedia" ? "active" : ""}`} onClick={() => handleTabClick("Comedia")} >
+          Comedia
+        </div>
+        <div className={`GenreTab ${selectedTab === "Deporte" ? "active" : ""}`} onClick={() => handleTabClick("Deporte")} >
+          Deporte
+        </div>
+      </div>
 
+    
 
       <div className="card-display">
         {nfts.map((nft, index) => (

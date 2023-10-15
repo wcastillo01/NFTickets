@@ -6,6 +6,7 @@ import FAQ from "./pages/FAQ";
 import Support from "./pages/Support";
 import Member from "./pages/Member";
 import Details from "./components/details/Details";
+import Services from "./components/Services";
 import Test from "./components/Test";
 import { ThirdwebProvider } from "@thirdweb-dev/react";
 
@@ -19,6 +20,7 @@ const App = () => {
             <Route path="/member-register" element={<Member />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/support" element={<Support />} />
+            <Route path="/services" element={<Services />} />
             <Route path="/nft/:id" element={<Details/>} />
             <Route path="/test" element={<Publish />} />
           </Route>

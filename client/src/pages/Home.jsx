@@ -1,5 +1,5 @@
 import React from 'react'
-import { Navbar, Welcome, Footer, Services, Transactions } from "../components";
+import { Welcome, Footer, Services, Transactions } from "../components";
 import { ThemeContext } from "../context/ThemeContext";
 import { useContext } from "react";
 
@@ -11,7 +11,6 @@ export default function Home() {
             <Welcome />
         </div>
         <Transactions />
-        <Services />
         <Footer />
     </div>
   )

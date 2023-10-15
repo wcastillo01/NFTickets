@@ -109,9 +109,17 @@ function Test() {
                         image: formData.image, // Accepts any URL or File type
                       },
                       supply: formData.supply,
-                      to: "0xb775800d0939f219BeF0e47B4aFFD848B430D3AC", // Use useAddress hook to get current wallet address
+                      to: "0xb775800d0939f219BeF0e47B4aFFD848B430D3AC", // Use useAddress hook to get the current wallet address
                     })
-                  }>
+                  }
+                  disabled={
+                    !formData.name ||
+                    !formData.description ||
+                    !formData.image ||
+                    !formData.supply ||
+                    !formData.agreedTerms
+                  }
+                >
                   Crear NFT
                 </Web3Button>
               </button>
