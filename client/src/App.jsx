@@ -16,13 +16,13 @@ const App = () => {
       <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
-            <Route path="/publish-event" element={<Test />} />
+            <Route path="/publish-event" element={<Publish />} />
             <Route path="/member-register" element={<Member />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/support" element={<Support />} />
             <Route path="/services" element={<Services />} />
             <Route path="/nft/:id" element={<Details/>} />
-            <Route path="/test" element={<Publish />} />
+            <Route path="/test" element={<Test />} />
           </Route>
         </Routes>
       </ThirdwebProvider >

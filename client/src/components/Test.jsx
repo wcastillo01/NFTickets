@@ -1,130 +1,15 @@
-import { useMintNFT, useContract, Web3Button } from "@thirdweb-dev/react";
-import React, { useState } from 'react';
-import { TextField, Button, Container } from "@mui/material"
- 
-// Your smart contract address
-const contractAddress = "0x04fC8b9a53daD619761ffCBC0bfc908b3C865491";
+import React from 'react'
+import { useOwnedNFTs, useContract, useAddress } from "@thirdweb-dev/react";
 
-function Test () {
+
+const contractAddress = "0x0D3E82CC75045dD5AA114a1B0A53e01a99f4A68C";
+export default function Test() {
+  const address = "0xffe227D2451316f929c49444Fe3B7117639aa3A0";
   const { contract } = useContract(contractAddress);
-  const { mutateAsync: mintNft, isLoading, error } = useMintNFT(contract);
+  const { data, isLoading, error } = useOwnedNFTs(contract, address);
 
-  const [formData, setFormData] = useState({
-    name: '',
-    description: '',
-    image: '',
-    supply: '',
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Do something with the form data, e.g., send it to an API
-    console.log(formData);
-  };
-    
+  console.log({ data });
   return (
-
-    <div>
-      <div>
-        <div className="min-h-screen flex justify-center items-center">
-          <div
-            className="bg-white w-full max-w-md bg-blue-glassmorphism p-6 rounded-lg border shadow-lg"
-            style={{ marginTop: "-150px" }}
-          >
-            <h2 className="text-2xl font-bold mb-8">Crear evento</h2>
-            <form onSubmit={handleSubmit}>
-              <div className="mb-4 flex items-center">
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="w-full p-2 rounded-lg"
-                  placeholder="Nombre"
-                  required
-                />
-              </div>
-
-              <div className="mb-4 flex items-center">
-                <input
-                  type="text"
-                  name="description"
-                  value={formData.description}
-                  onChange={handleChange}
-                  className="w-full p-2 rounded-lg"
-                  placeholder="Descripcion"
-                  required
-                />
-              </div>
-              <div className="mb-4 flex items-center">
-                <input
-                  type="text"
-                  name="image"
-                  value={formData.image}
-                  onChange={handleChange}
-                  className="w-full p-2 rounded-lg"
-                  placeholder="Imagen (link)"
-                  required
-                />
-              </div>
-              <div className="mb-4 flex items-center">
-                <input
-                 type="number"
-                  name="supply"
-                  value={formData.supply}
-                  onChange={handleChange}
-                  className="w-full p-2 rounded-lg"
-                  placeholder="Cantidad"
-                  required
-                />
-              </div>
-              <div className="mb-4">
-                <input
-                  type="checkbox"
-                  name="agreedTerms"
-                  checked={formData.agreedTerms}
-                  onChange={handleChange}
-                  className="mr-2"
-                  required
-                />
-                <label className="text-sm">Acepto los términos y condiciones</label>
-              </div>
-              
-              <button>
-                <Web3Button
-                  contractAddress={contractAddress}
-                  action={() =>
-                    mintNft({
-                      metadata: {
-                        name: formData.name,
-                        description: formData.description,
-                        image: formData.image, // Accepts any URL or File type
-                      },
-                      supply: formData.supply,
-                      to: "0xb775800d0939f219BeF0e47B4aFFD848B430D3AC", // Use useAddress hook to get current wallet address
-                    })
-                  }>
-                  Crear NFT
-                </Web3Button>
-              </button>
-            </form>
-          </div>
-        </div>
-       </div>
-  
-    </div>
-  );
+    <div>Test</div>
+  )
 }
-
-
-
-
-export default Test;

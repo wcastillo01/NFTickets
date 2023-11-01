@@ -1,27 +1,38 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import {
+    useBuyDirectListing,
+    useContract,
+    Web3Button,
+} from "@thirdweb-dev/react";
+import { ListingType } from "@thirdweb-dev/sdk";
 import "./Details.css";
 
+const ERC1155ContractAddr = "0x0D3E82CC75045dD5AA114a1B0A53e01a99f4A68C";
+const MarketplaceAddr = "0xe8ab090820BAf2B9E1518032D69B0a765bbc7474";
 export default function Details() {
 
   const {id} = useParams();
   const [nfts, setNfts] = useState();
   const [loading, setLoading] = useState(true);
 
+    const { contract } = useContract(MarketplaceAddr, "marketplace-v3");
+    const { mutateAsync: buyDirectListing } = useBuyDirectListing(contract);
+    
 
+    // RENDERS DETAILS OF NFT IN CONTRACT
     useEffect(() => {
         const fetchData = async () => {
             const options = {
                 method: "GET",
                 headers: {
                     accept: "application/json",
-                    // "X-API-KEY": "e4acf702d0764d778e6a7a9eab661aa0",
                 },
             };
 
             try {
                 const response = await fetch(
-                    `https://testnets-api.opensea.io/v2/chain/goerli/contract/0x04fC8b9a53daD619761ffCBC0bfc908b3C865491/nfts/${id}`,
+                    `https://testnets-api.opensea.io/v2/chain/goerli/contract/${ERC1155ContractAddr}/nfts/${id}`,
                     options
                 );
                 const data = await response.json();
@@ -33,9 +44,10 @@ export default function Details() {
                 console.error(err);
             }
         };
-
         fetchData();
     }, []);
+
+
 
     if (loading == true) {
         return (
@@ -46,19 +58,31 @@ export default function Details() {
     }
 
   return (
-    <div class="Tab">
+      <div className="Tab">
         <div>
-        <h1 class="Name"> {nfts?.name}</h1> 
-        <img class="Image" src={nfts?.image_url}/>
+        <h1 className="Name"> {nfts?.name}</h1> 
+        <img className="Image" src={nfts?.image_url}/>
         </div>
 
         <div className="side-tab">
-        <h1 class="Creator"> <b>Creador:</b> {nfts?.creator}</h1>
-        <p class="Description"> <b>Sobre el evento:</b> {nfts?.description}</p>
-        <span class="Quantity"> <b>Cantidad: </b> {nfts?.owners[0].quantity}</span>
+        <h1 className="Creator"> <b>Creador:</b> {nfts?.creator}</h1>
+        <p className="Description"> <b>Sobre el evento:</b> {nfts?.description}</p>
+        <span className="Quantity"> <b>Cantidad: </b> {nfts?.owners[0].quantity}</span>
+        <span className="Quantity"> <b>ID: </b> {nfts?.identifier}</span>
         <br />
             <div style={{ textAlign: 'center' }}>
-            <button className="buy-button">Buy now</button>
+            <Web3Button
+                    contractAddress={MarketplaceAddr}
+                    action={() =>
+                        buyDirectListing({
+                            listingId: nfts.identifier, // ID of the listing to buy
+                            quantity: "1",
+                            buyer: "0xffe227D2451316f929c49444Fe3B7117639aa3A0", // Wallet to buy for
+                        })
+                    }
+                >
+                    Comprar ahora
+                </Web3Button> 
             </div>
         </div>
     </div>

@@ -1,33 +1,21 @@
 import React, { useEffect, useState } from "react";
-import { Tabs, Tab } from '@mui/material';
 import "./Transactions.css";
 import { Link } from "react-router-dom";
+import { useValidDirectListings, useContract } from "@thirdweb-dev/react";
 
+const MarketplaceAddr = "0xe8ab090820BAf2B9E1518032D69B0a765bbc7474";
 const Transactions = () => {
   const [nfts, setNfts] = useState([]);
   const [selectedTab, setSelectedTab] = useState("all");
+  const { contract } = useContract(MarketplaceAddr, "marketplace-v3");
+  
+  const {
+    data: directListings,
+    isLoading,
+    error,
+  } = useValidDirectListings(contract);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const options = {
-        method: "GET",
-        headers: {
-          accept: "application/json",
-          // "X-API-KEY": "e4acf702d0764d778e6a7a9eab661aa0",
-        },
-      };
-
-      try {
-        const response = await fetch(
-          "https://testnets-api.opensea.io/v2/chain/goerli/contract/0x04fC8b9a53daD619761ffCBC0bfc908b3C865491/nfts",
-          options
-        );
-        const data = await response.json();
-        setNfts(data.nfts);
-      } catch (err) {
-        console.error(err);
-      }
-    };
+  console.log({ directListings });
 
     const filterNfts = () => {
       if (selectedTab === "all") {
@@ -41,15 +29,6 @@ const Transactions = () => {
     const handleTabClick = (category) => {
       setSelectedTab(category);
     };
-
-    fetchData();
-  }, []);
-
-  const [value, setValue] = useState(0);
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
 
   return (
     <div>
@@ -71,22 +50,23 @@ const Transactions = () => {
         </div>
       </div>
 
-    
-
-      <div className="card-display">
-        {nfts.map((nft, index) => (
-          <div className="card">
-            <div className="container" key={nft?.identifier}>
-            <Link to={`/nft/${nft?.identifier}`}>
-              <h3 className="NftName">{nft?.name}</h3>
-              <p className="NftDescription">{nft?.description}</p>
-              <img className="NftImage" src={nft?.image_url} alt={nft?.name} />
-           </Link>
-              {/* <button className="bg-[#2952e3] py-2 px-7 mx-4 rounded-full cursor-pointer hover:bg-[#2546bd]" onClick={() => alert("gracias")}> Buy </button> */}
-            </div>
+      {directListings !== undefined && (
+        <div>
+            <div className="card-display">
+              {directListings.map((directListing) => (
+                <div className="card">
+                  <div className="container" key={directListing.asset.id}>
+                    <Link to={`/nft/${directListing.asset.id}`}>
+                      <h3 className="NftName">{directListing.asset.name}</h3>
+                      <p className="NftDescription">{directListing.asset.description}</p>
+                      <img className="NftImage" src={directListing.asset.image} alt={directListing.asset.name} />
+                    </Link>
+                  </div>
+                </div>
+               ))}
           </div>
-        ))}
-      </div>
+        </div>
+      )}
     </div>
   );
 };
