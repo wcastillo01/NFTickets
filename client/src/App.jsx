@@ -8,6 +8,7 @@ import Member from "./pages/Member";
 import Details from "./components/details/Details";
 import Services from "./components/Services";
 import Test from "./components/Test";
+import Owned from "./pages/Owned";
 import { ThirdwebProvider } from "@thirdweb-dev/react";
 
 const App = () => {
@@ -22,6 +23,7 @@ const App = () => {
             <Route path="/support" element={<Support />} />
             <Route path="/services" element={<Services />} />
             <Route path="/nft/:id" element={<Details/>} />
+            <Route path="/owned" element={<Owned />} />
             <Route path="/test" element={<Test />} />
           </Route>
         </Routes>

@@ -43,6 +43,7 @@ const Navbar = () => {
           { label: "Sobre Nosotros", path: "/services",},
           { label: "FAQ", path: "/faq", },
           { label: "Soporte", path: "/support", },
+          { label: "Mis tickets", path: "/owned", },
         ].map((item, index) => (
           <NavBarItem
             key={item.label + index}

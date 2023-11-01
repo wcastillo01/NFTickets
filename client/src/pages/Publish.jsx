@@ -7,6 +7,7 @@ import {ethers} from "ethers";
 // Your smart contract address
 const ERC1155ContractAddr = "0x0D3E82CC75045dD5AA114a1B0A53e01a99f4A68C";
 const MarketplaceAddr = "0xe8ab090820BAf2B9E1518032D69B0a765bbc7474";
+const PublisherWallet = "0xb775800d0939f219BeF0e47B4aFFD848B430D3AC";
 
 function Test() {
   const address = useAddress();
@@ -39,11 +40,60 @@ function Test() {
     // console.log(formData);
   };
 
-  // if (address !== "0xb775800d0939f219BeF0e47B4aFFD84430D3AC") return <div>HOLA</div>;
+  if (address !== PublisherWallet) return (
+    <div>
+      <h1
+        style={{
+          fontSize: '2.5rem', // You can adjust the font size as needed
+          fontWeight: 'bold',
+          color: 'white',
+          textAlign: 'center',
+          width: '40%',
+          margin: '0 auto', // Add this line to center horizontally
+        }}
+      >
+        Lo sentimos, aun no tienes acceso para publicar eventos. Registrate aqui:
+      </h1>
 
-  return (
+      <div className="min-h-screen flex justify-center items-center">
+        <div
+          className="bg-white w-full max-w-xl p-4 rounded-lg border"
+          style={{ marginTop: "-450px" }}
+        >
+          <div className="flex justify-between items-center mb-4">
+            <h2 className="text-2xl font-bold text-black">Registrate</h2>
+            <div className="text-right">
+              <h3 className="text-xl font-bold text-black">Contacto</h3>
+              <p className="text-sm text-gray-500">creators@nftickets.com</p>
+            </div>
+          </div>
+          <form>
+            <input
+              type="email"
+              className="w-full bg-gray-100 border border-gray-300 rounded-lg p-2 text-sm mt-2"
+              placeholder="Tu correo electrónico"
+              value=""
+              required
+            />
+            <textarea
+              className="w-full h-32 bg-gray-100 border border-gray-300 rounded-lg p-2 text-sm mt-2"
+              placeholder="Describenos tu propuesta..."
+              value=""
+              required
+            />
+            <button
+              type="submit"
+              className="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700"
+            >
+              Enviar Mensaje
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  )
 
-
+return (
     <div>
       <div>
         <div className="min-h-screen flex justify-center items-center">
