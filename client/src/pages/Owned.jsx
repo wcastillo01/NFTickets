@@ -3,20 +3,38 @@ import { useOwnedNFTs, useContract, useAddress } from "@thirdweb-dev/react";
 const contractAddress = "0x0D3E82CC75045dD5AA114a1B0A53e01a99f4A68C";
 
 export default function Owned() {
-    const address = "dsa"//useAddress();
+    const address =useAddress();
     const { contract } = useContract(contractAddress);
-    const { data, isLoading, error } = useOwnedNFTs(contract, address);
+    const { data, isLoading } = useOwnedNFTs(contract, address);
     const [showMessage, setShowMessage] = useState(false);
+    const [ loading, setLoading] = useState(true);
+
+    console.log({ data });
+    console.log({ isLoading });
 
     useEffect(() => {
-        const timer = setTimeout(() => {
-            if (data === undefined) {
+        let timer;
+
+        if (data !== undefined) {
+            setLoading(false);
+        } else {
+            timer = setTimeout(() => {
                 setShowMessage(true);
-            }
-        }, 5000); // 5000 milliseconds (5 seconds)
+                setLoading(false);
+            }, 5000); // 5000 milliseconds (5 seconds)
+        }
 
         return () => clearTimeout(timer);
     }, [data]);
+
+    if (loading) {
+        return (
+            <div className="flex justify-center items-center py-3">
+                <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-white-700" 
+                style={{ marginTop: "15%" }}/>
+            </div>
+        )
+    }
 
     return (
         <div>

@@ -18,7 +18,7 @@ export default function Details() {
 
     const { contract } = useContract(MarketplaceAddr, "marketplace-v3");
     const { mutateAsync: buyDirectListing } = useBuyDirectListing(contract);
-    
+
 
     // RENDERS DETAILS OF NFT IN CONTRACT
     useEffect(() => {
@@ -52,7 +52,8 @@ export default function Details() {
     if (loading == true) {
         return (
             <div className="flex justify-center items-center py-3">
-                <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-white-700" />
+                <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-white-700"
+                style={{ marginTop: "15%" }} /> 
             </div>
         )
     }

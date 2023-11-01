@@ -66,3 +66,19 @@
   /* Add other styling as needed */
 }
 
+.search-bar {
+  display: flex;
+  align-items: center;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+}
+
+#search-input {
+  flex: 1;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+}
+#search-button:hover {
+  background-color: #0056b3;
+}

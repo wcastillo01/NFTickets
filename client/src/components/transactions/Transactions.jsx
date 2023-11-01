@@ -36,25 +36,31 @@ const Transactions = () => {
 
   return (
     <div>
-        <div className="GenreTabs">
-        <div className={`GenreTab ${selectedTab === "all" ? "active" : ""}`} onClick={() => handleTabClick("all")} >
-          Todos
+      <div style={{display: "Flex"}}>
+          <div className="GenreTabs">
+          <div className={`GenreTab ${selectedTab === "all" ? "active" : ""}`} onClick={() => handleTabClick("all")} >
+            Todos
+          </div>
+          <div className={`GenreTab ${selectedTab === "Musica" ? "active" : "google.com"}`} onClick={() => setMusic(true)}>
+            Musica
+          </div>
+          <div className={`GenreTab ${selectedTab === "Cine" ? "active" : ""}`} onClick={() => handleTabClick("Cine")}>
+            Cine
+          </div>
+          <div className={`GenreTab ${selectedTab === "Comedia" ? "active" : ""}`} onClick={() => setComedia(true)} >
+            Comedia
+          </div>
+          <div className={`GenreTab ${selectedTab === "Deporte" ? "active" : ""}`} onClick={() => handleTabClick("Deporte")} >
+            Deporte
+          </div>
         </div>
-        <div className={`GenreTab ${selectedTab === "Musica" ? "active" : "google.com"}`} onClick={() => setMusic(true)}>
-           Musica
-        </div>
-        <div className={`GenreTab ${selectedTab === "Cine" ? "active" : ""}`} onClick={() => handleTabClick("Cine")}>
-          Cine
-        </div>
-        <div className={`GenreTab ${selectedTab === "Comedia" ? "active" : ""}`} onClick={() => setComedia(true)} >
-          Comedia
-        </div>
-        <div className={`GenreTab ${selectedTab === "Deporte" ? "active" : ""}`} onClick={() => handleTabClick("Deporte")} >
-          Deporte
+
+        <div class="search-bar">
+          <input type="text" id="search-input" placeholder="Buscar por nombre" />
         </div>
       </div>
-
-      {isMusic ? isComedia ? <div>mmg</div> : <div>mmg2</div> : <div>mmg3</div>}
+{/* </div>
+      {isMusic ? isComedia ? <div>mmg</div> : <div>mmg2</div> : <div>mmg3</div>} */}
 
       {directListings !== undefined && (
         <div>
