@@ -100,11 +100,10 @@ function Test() {
 
   return (
     <div>
-      <div>
+      <div >
         <div className="min-h-screen flex justify-center items-center">
-          <div
-            className="bg-white w-full max-w-md bg-blue-glassmorphism p-6 rounded-lg border shadow-lg"
-            style={{ marginTop: "-150px" }}
+          <div class="w-full max-w-md white-glassmorphism p-6 rounded-lg border shadow-lg"
+            style={{ color: "white", marginTop: "-150px" }}
           >
             <h2 className="text-2xl font-bold mb-8">Crear evento</h2>
             <form onSubmit={handleSubmit}>
@@ -165,7 +164,9 @@ function Test() {
                   Acepto los términos y condiciones
                 </label>
               </div>
+              <div style={{ textAlign: 'center' }}>
 
+              
               <Web3Button
                 contractAddress={ERC1155ContractAddr}
                 action={() =>
@@ -182,6 +183,7 @@ function Test() {
               >
                 Crear NFT
               </Web3Button>
+              </div>
             </form>
           </div>
         </div>

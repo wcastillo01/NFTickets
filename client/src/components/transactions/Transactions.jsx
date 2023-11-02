@@ -37,7 +37,7 @@ const Transactions = () => {
   return (
     <div>
       <div style={{display: "Flex"}}>
-          <div className="GenreTabs">
+          <div className="GenreTabs white-glassmorphism">
           <div className={`GenreTab ${selectedTab === "all" ? "active" : ""}`} onClick={() => handleTabClick("all")} >
             Todos
           </div>
@@ -55,9 +55,6 @@ const Transactions = () => {
           </div>
         </div>
 
-        <div class="search-bar">
-          <input type="text" id="search-input" placeholder="Buscar por nombre" />
-        </div>
       </div>
 {/* </div>
       {isMusic ? isComedia ? <div>mmg</div> : <div>mmg2</div> : <div>mmg3</div>} */}
@@ -66,8 +63,8 @@ const Transactions = () => {
         <div>
             <div className="card-display">
               {directListings.map((directListing) => (
-                <div className="card white-glassmorphism">
-                  <div className="container" key={directListing.asset.id}>
+                <div key={directListing.asset.id} className="card white-glassmorphism">
+                  <div className="container">
                     <Link to={`/nft/${directListing.asset.id}`}>
                       <h3 className="NftName">{directListing.asset.name}</h3>
                       <p className="NftDescription">{directListing.asset.description}</p>

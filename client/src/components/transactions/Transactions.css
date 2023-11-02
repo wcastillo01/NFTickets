@@ -51,7 +51,7 @@
 
 
 .GenreTabs {
-  background-color: white;
+  /* background-color: white; */
   border-radius: 50px;
   width: min(calc(100% / 3), 500px); /* Set width to 1/3 of the screen size or a minimum of 500px */
   display: flex;

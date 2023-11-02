@@ -3,8 +3,13 @@
 .Name {
     font-size: 40px;
     font-weight: 750;
-    margin: 10px 30px;
-    
+    white-space: nowrap; 
+    /* overflow: hidden; */
+    text-overflow: ellipsis; /* Show ellipsis (...) when text overflows */
+    max-width: 90%; /* Adjust the maximum width as needed */
+    margin-left: 30px; /* Push the text to the right */    
+    margin-top: 8px;
+    margin-bottom: 15px;
 }
 
 .Image {
@@ -34,9 +39,9 @@
     width: 1000px;
     height: 600px;
     font-weight: lighter;
-    background-color: white;
     border-radius: 1%;
     display: flex;
+    color: white;
 }
 
 .side-tab{

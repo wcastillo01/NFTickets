@@ -63,7 +63,7 @@ export default function Details() {
     }
 
   return (
-      <div className="Tab">
+      <div className="Tab white-glassmorphism">
         <div>
         <h1 className="Name"> {nfts?.name}</h1>
         <img className='Image' src={nfts?.image_url} />
