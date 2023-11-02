@@ -5,47 +5,51 @@ import {
     useContract,
     Web3Button,
 } from "@thirdweb-dev/react";
-import { ListingType } from "@thirdweb-dev/sdk";
 import "./Details.css";
+import axios from "axios"
 
 const ERC1155ContractAddr = "0x0D3E82CC75045dD5AA114a1B0A53e01a99f4A68C";
 const MarketplaceAddr = "0xe8ab090820BAf2B9E1518032D69B0a765bbc7474";
 export default function Details() {
-
   const {id} = useParams();
   const [nfts, setNfts] = useState();
   const [loading, setLoading] = useState(true);
 
-    const { contract } = useContract(MarketplaceAddr, "marketplace-v3");
-    const { mutateAsync: buyDirectListing } = useBuyDirectListing(contract);
+  const { contract } = useContract(MarketplaceAddr, "marketplace-v3");
+  const { mutateAsync: buyDirectListing } = useBuyDirectListing(contract);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const options = {
+        method: "GET",
+        headers: {
+          accept: "application/json",
+          // "X-API-KEY": "e4acf702d0764d778e6a7a9eab661aa0",
+        },
+      };
 
-    // RENDERS DETAILS OF NFT IN CONTRACT
-    useEffect(() => {
-        const fetchData = async () => {
-            const options = {
-                method: "GET",
-                headers: {
-                    accept: "application/json",
-                },
-            };
+      try {
+        const response = await fetch(
+            `https://testnets-api.opensea.io/v2/chain/goerli/contract/${ERC1155ContractAddr}/nfts/${id}`,
+          options
+        );
+        const data = await response.json();
+        const metadata_link = data.nft.metadata_url.replace(
+          "ipfs://",
+          "https://ipfs.io/ipfs/"
+        );
 
-            try {
-                const response = await fetch(
-                    `https://testnets-api.opensea.io/v2/chain/goerli/contract/${ERC1155ContractAddr}/nfts/${id}`,
-                    options
-                );
-                const data = await response.json();
-                setNfts(data.nft);
-
-                setLoading(false);
-                console.log(data)
-            } catch (err) {
-                console.error(err);
-            }
-        };
-        fetchData();
-    }, []);
+        const metadata = await axios.get(metadata_link);
+        const image_url = metadata.data.image;
+        setNfts({ ...data.nft, image_url });
+        setLoading(false);
+        console.log(data);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    fetchData();
+  }, []);
 
 
 
@@ -61,8 +65,8 @@ export default function Details() {
   return (
       <div className="Tab">
         <div>
-        <h1 className="Name"> {nfts?.name}</h1> 
-        <img className="Image" src={nfts?.image_url}/>
+        <h1 className="Name"> {nfts?.name}</h1>
+        <img className='Image' src={nfts?.image_url} />
         </div>
 
         <div className="side-tab">

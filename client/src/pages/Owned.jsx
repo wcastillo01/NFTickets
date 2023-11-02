@@ -3,7 +3,7 @@ import { useOwnedNFTs, useContract, useAddress } from "@thirdweb-dev/react";
 const contractAddress = "0x0D3E82CC75045dD5AA114a1B0A53e01a99f4A68C";
 
 export default function Owned() {
-    const address =useAddress();
+    const address = useAddress();
     const { contract } = useContract(contractAddress);
     const { data, isLoading } = useOwnedNFTs(contract, address);
     const [showMessage, setShowMessage] = useState(false);
@@ -60,7 +60,7 @@ export default function Owned() {
                     <div>
                         <div className="card-display">
                             {data.map((data) => (
-                                <div className="card" key={data.metadata.id}>
+                                <div className="card white-glassmorphism" key={data.metadata.id}>
                                     <div className="container">
                                         <h3 className="NftName">{data.metadata.name}</h3>
                                         <p className="NftDescription">{data.metadata.description}</p>

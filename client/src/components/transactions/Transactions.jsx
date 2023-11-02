@@ -66,7 +66,7 @@ const Transactions = () => {
         <div>
             <div className="card-display">
               {directListings.map((directListing) => (
-                <div className="card">
+                <div className="card white-glassmorphism">
                   <div className="container" key={directListing.asset.id}>
                     <Link to={`/nft/${directListing.asset.id}`}>
                       <h3 className="NftName">{directListing.asset.name}</h3>

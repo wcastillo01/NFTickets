@@ -12,13 +12,10 @@ const PublisherWallet = "0xb775800d0939f219BeF0e47B4aFFD848B430D3AC";
 function Test() {
   const address = useAddress();
   const { contract } = useContract(ERC1155ContractAddr);
-  const { mutateAsync: mintNft, isLoading, error } = useMintNFT(contract);
-
+  const { mutateAsync: mintNft, isLoading} = useMintNFT(contract);
   const { contract:marketplace } = useContract(MarketplaceAddr, "marketplace-v3");
-  const {
-    mutateAsync: createDirectListing,
-  } = useCreateDirectListing(marketplace);
-
+  const { mutateAsync: createDirectListing} = useCreateDirectListing(marketplace);
+  
   const [formData, setFormData] = useState({
     name: '',
     description: '',
@@ -28,16 +25,24 @@ function Test() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+    setFormData((prevData) => ({...prevData, [name]: value, }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Do something with the form data, e.g., send it to an API
-    // console.log(formData);
+  };
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+
+    reader.onloadend = () => {
+      setFormData((prevData) => ({ ...prevData, image: reader.result }));
+    };
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
   };
 
   if (address !== PublisherWallet) return (
@@ -93,7 +98,7 @@ function Test() {
     </div>
   )
 
-return (
+  return (
     <div>
       <div>
         <div className="min-h-screen flex justify-center items-center">
@@ -128,23 +133,22 @@ return (
               </div>
               <div className="mb-4 flex items-center">
                 <input
-                  type="text"
-                  name="image"
-                  value={formData.image}
-                  onChange={handleChange}
-                  className="w-full p-2 rounded-lg"
-                  placeholder="Imagen (link)"
-                  required
-                />
-              </div>
-              <div className="mb-4 flex items-center">
-                <input
                   type="number"
                   name="supply"
                   value={formData.supply}
                   onChange={handleChange}
                   className="w-full p-2 rounded-lg"
                   placeholder="Cantidad"
+                  required
+                />
+              </div>
+              <div className="mb-4 flex items-center">
+                <input
+                  type="file"
+                  accept="image/*"
+                  name="image"
+                  onChange={handleImageChange}
+                  className="w-full p-2 rounded-lg"
                   required
                 />
               </div>
@@ -157,42 +161,27 @@ return (
                   className="mr-2"
                   required
                 />
-                <label className="text-sm">Acepto los términos y condiciones</label>
+                <label className="text-sm">
+                  Acepto los términos y condiciones
+                </label>
               </div>
 
-                <Web3Button
-                  contractAddress={ERC1155ContractAddr}
-                  action={() => {
- 
-                    mintNft({
-                      metadata: {
-                        name: formData.name,
-                        description: formData.description,
-                        image: formData.image, // Accepts any URL or File type
-                      },
-                      supply: formData.supply,
-                      to: "0xb775800d0939f219BeF0e47B4aFFD848B430D3AC", // Use useAddress hook to get the current wallet address
-                    }).then(result => {
-                     return createDirectListing({
-                      assetContractAddress: ERC1155ContractAddr,
-                      tokenId: ethers.BigNumber.from(result.id._hex).toString(),
-                      pricePerToken: "0.00000000000000001",
-                      quantity: formData.supply,
-                      
-                     })
-                    }).catch(console.error)
-                  }
+              <Web3Button
+                contractAddress={ERC1155ContractAddr}
+                action={() =>
+                  mintNft({
+                    metadata: {
+                      name: formData.name,
+                      description: formData.description,
+                      image: formData.image,
+                    },
+                    supply: formData.supply,
+                    to: useAddress(), // Use useAddress hook to get the current wallet address
+                  })
                 }
-                  disabled={
-                    !formData.name ||
-                    !formData.description ||
-                    !formData.image ||
-                    !formData.supply ||
-                    !formData.agreedTerms
-                  }
-                >
-                  Crear NFT
-                </Web3Button>
+              >
+                Crear NFT
+              </Web3Button>
             </form>
           </div>
         </div>
@@ -200,8 +189,5 @@ return (
     </div>
   );
 }
-
-
-
 
 export default Test;

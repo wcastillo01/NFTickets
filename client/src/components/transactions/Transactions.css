@@ -1,23 +1,25 @@
 .NftName {
   font-size: 23px;
-  font-weight: bolder;
-  margin-top: 5px;
+  font-weight: 900;
+  margin: 10px 0;
+  color: white;
 }
 
 .NftDescription {
-  font-size: 15px;
+  font-size: 12px;
   width: 300px;
-  margin-bottom: 9px;
+  margin-bottom: 20px;
   overflow: hidden;
   line-height: 1.2em; /* Limita el texto a 3 lineas */
   height: 3.6em;
+  color: white;
 }
 
 .NftImage {
   width: 300px;
   height: 300px;
-  margin-bottom: 5px;
   border-radius: 1%;
+  margin: 0 auto;
 }
 
 .card {
@@ -38,10 +40,9 @@
   flex: 0 0 25%;
   transition: 0.3s;
   border-radius: 5px;
-  background-color: white;
   margin-bottom: 10px;
   padding: 2px 15px 5px;
-  height: 450px;
+  height: 420px;
 }
 
 .container:hover {
