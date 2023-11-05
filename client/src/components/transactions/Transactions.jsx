@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./Transactions.css";
 import { Link } from "react-router-dom";
 import { useValidDirectListings, useContract } from "@thirdweb-dev/react";
-import { ConnectWallet } from "@thirdweb-dev/react"
 
 const MarketplaceAddr = "0xe8ab090820BAf2B9E1518032D69B0a765bbc7474";
 const Transactions = () => {
@@ -12,31 +11,18 @@ const Transactions = () => {
 
   const [isMusic, setMusic] = useState(false);
   const [isComedia, setComedia] = useState(false);
-  
-  const {
-    data: directListings,
-    isLoading,
-    error,
-  } = useValidDirectListings(contract);
 
-  console.log({ directListings });
+  const { data: directListings, isLoading, error,} = useValidDirectListings(contract);
 
-    const filterNfts = () => {
-      if (selectedTab === "all") {
-        return nfts;
-      } 
-      else if ("Musica" === selectedTab){
-        console.log("mmg")
-      }
-    };
-  
+  console.log({ directListings }); //TESTING TO SHOW DATA IN CONSOLE
+
     const handleTabClick = (category) => {
       setSelectedTab(category);
     };
 
   return (
     <div>
-      <div style={{display: "Flex"}}>
+      <div style={{ display: "flex", color: "white" }}>
           <div className="GenreTabs white-glassmorphism">
           <div className={`GenreTab ${selectedTab === "all" ? "active" : ""}`} onClick={() => handleTabClick("all")} >
             Todos
@@ -54,10 +40,7 @@ const Transactions = () => {
             Deporte
           </div>
         </div>
-
       </div>
-{/* </div>
-      {isMusic ? isComedia ? <div>mmg</div> : <div>mmg2</div> : <div>mmg3</div>} */}
 
       {directListings !== undefined && (
         <div>
@@ -67,7 +50,7 @@ const Transactions = () => {
                   <div className="container">
                     <Link to={`/nft/${directListing.asset.id}`}>
                       <h3 className="NftName">{directListing.asset.name}</h3>
-                      <p className="NftDescription">{directListing.asset.description}</p>
+                      <p className="NftDescription text-justify">{directListing.asset.description}</p>
                       <img className="NftImage" src={directListing.asset.image} alt={directListing.asset.name} />
                     </Link>
                   </div>

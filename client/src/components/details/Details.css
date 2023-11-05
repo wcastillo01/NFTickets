@@ -4,10 +4,10 @@
     font-size: 40px;
     font-weight: 750;
     white-space: nowrap; 
-    /* overflow: hidden; */
-    text-overflow: ellipsis; /* Show ellipsis (...) when text overflows */
-    max-width: 90%; /* Adjust the maximum width as needed */
-    margin-left: 30px; /* Push the text to the right */    
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 90%; 
+    margin-left: 30px;
     margin-top: 8px;
     margin-bottom: 15px;
 }

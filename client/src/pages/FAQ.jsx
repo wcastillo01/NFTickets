@@ -37,12 +37,12 @@ const FAQ = () => {
   ];
 
   return (
-    <div className="bg-gradient-bg-welcome-light min-h-screen flex justify-center items-center">
+    <div className="min-h-screen flex justify-center items-center">
       <div
-        className="bg-white w-full max-w-md bg-blue-glassmorphism p-4 rounded-lg border border-gradient-bg-welcome-dark shadow-lg"
-        style={{ marginTop: "-250px" }}
+        className="white-glassmorphism w-full max-w-md p-4 rounded-lg border border-gradient-bg-welcome-dark shadow-lg"
+        style={{ color: "white", marginTop: "-250px" }}
       >
-        <h2 className="text-2xl font-bold mb-8 text-black">
+        <h2 className="text-2xl font-bold mb-8">
           Preguntas Frecuentes
         </h2>
         {faqData.map((item, index) => (
@@ -51,9 +51,9 @@ const FAQ = () => {
             className="mb-4 cursor-pointer"
             onClick={() => handleAccordionClick(index)}
           >
-            <h3 className="text-lg font-bold text-black">{item.question}</h3>
+            <h3 className="text-lg font-extrabold">{item.question}</h3>
             {activeIndex === index && (
-              <p className="mt-2 text-sm text-black">{item.answer}</p>
+              <p className="mt-2 text-sm font-light text-justify">{item.answer}</p>
             )}
           </div>
         ))}

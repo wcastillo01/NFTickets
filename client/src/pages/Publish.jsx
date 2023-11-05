@@ -103,9 +103,9 @@ function Test() {
       <div >
         <div className="min-h-screen flex justify-center items-center">
           <div class="w-full max-w-md white-glassmorphism p-6 rounded-lg border shadow-lg"
-            style={{ color: "white", marginTop: "-150px" }}
+            style={{ marginTop: "-150px" }}
           >
-            <h2 className="text-2xl font-bold mb-8">Crear evento</h2>
+            <h2 className="text-3xl font-extrabold mb-8 text-white">Crear evento</h2>
             <form onSubmit={handleSubmit}>
               <div className="mb-4 flex items-center">
                 <input
@@ -141,7 +141,7 @@ function Test() {
                   required
                 />
               </div>
-              <div className="mb-4 flex items-center">
+              <div className="mb-4 flex items-center text-white">
                 <input
                   type="file"
                   accept="image/*"
@@ -160,7 +160,7 @@ function Test() {
                   className="mr-2"
                   required
                 />
-                <label className="text-sm">
+                <label className="text-sm text-white">
                   Acepto los términos y condiciones
                 </label>
               </div>
@@ -177,10 +177,18 @@ function Test() {
                       image: formData.image,
                     },
                     supply: formData.supply,
-                    to: useAddress(), // Use useAddress hook to get the current wallet address
-                  })
-                }
-              >
+                    to: PublisherWallet, // Use useAddress hook to get the current wallet address
+                  }).then(result => {
+                    return createDirectListing({
+                     assetContractAddress: ERC1155ContractAddr,
+                     tokenId: ethers.BigNumber.from(result.id._hex).toString(),
+                     pricePerToken: "0.00000000000000001",
+                     quantity: formData.supply,
+
+                    })
+                   }).catch(console.error)
+                 }
+               >
                 Crear NFT
               </Web3Button>
               </div>
