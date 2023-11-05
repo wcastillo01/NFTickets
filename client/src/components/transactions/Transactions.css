@@ -12,8 +12,6 @@
   display: block;
 }
 
-
-
 .card:hover .NftName {
   overflow: visible; /* Allow content to overflow the container */
   white-space: nowrap; /* Prevent text wrapping */
@@ -40,12 +38,11 @@
 .NftDescription {
   font-size: 12px;
   width: 330px;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
   overflow: hidden;
   line-height: 1.2em; /* Limita el texto a 3 lineas */
   height: 3.6em;
   color: white;
-  justify-content: center;
 }
 
 .NftImage {

@@ -42,7 +42,7 @@ const FAQ = () => {
         className="white-glassmorphism w-full max-w-md p-4 rounded-lg border border-gradient-bg-welcome-dark shadow-lg"
         style={{ color: "white", marginTop: "-250px" }}
       >
-        <h2 className="text-2xl font-bold mb-8">
+        <h2 className="text-3xl font-extrabold mb-8">
           Preguntas Frecuentes
         </h2>
         {faqData.map((item, index) => (

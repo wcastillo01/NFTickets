@@ -3,7 +3,7 @@
 .Name {
     font-size: 40px;
     font-weight: 750;
-    white-space: nowrap; 
+    /* white-space: nowrap;  */
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 90%; 
