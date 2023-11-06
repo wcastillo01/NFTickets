@@ -1,68 +1,94 @@
 import React, { useEffect, useState } from "react";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
 import "./Transactions.css";
+import { Link } from "react-router-dom";
+import { useValidDirectListings, useContract } from "@thirdweb-dev/react";
 
+const MarketplaceAddr = "0x3F4B384A7a8dE244434f3d82475304Dd1cEc4681";
 const Transactions = () => {
   const [nfts, setNfts] = useState([]);
+  const [selectedTab, setSelectedTab] = useState("all");
+  const { contract } = useContract(MarketplaceAddr, "marketplace-v3");
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const options = {
-        method: "GET",
-        headers: {
-          accept: "application/json",
-          // "X-API-KEY": "e4acf702d0764d778e6a7a9eab661aa0",
-        },
-      };
+  const [isMusic, setMusic] = useState(false);
+  const [isComedia, setComedia] = useState(false);
 
-      try {
-        const response = await fetch(
-          "https://testnets-api.opensea.io/v2/chain/sepolia/contract/0xA14863622A070b26b58040C771Fb7dF782b939bf/nfts",
-          options
-        );
-        const data = await response.json();
-        setNfts(data.nfts);
-      } catch (err) {
-        console.error(err);
-      }
-    };
+  const {
+    data: directListings,
+    isLoading,
+    error,
+  } = useValidDirectListings(contract);
 
-    fetchData();
-  }, []);
+  console.log({ directListings }); //TESTING TO SHOW DATA IN CONSOLE
 
-  const [value, setValue] = useState(0);
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
+  const handleTabClick = (category) => {
+    setSelectedTab(category);
   };
 
   return (
     <div>
-      <div>
-        <div className="GenreTabs">
-          <Tabs value={value} onChange={handleChange} centered>
-            <Tab label="Todos" />
-            <Tab label="Comedia" />
-            <Tab label="Deporte" />
-          </Tabs>
+      <div style={{ display: "flex", color: "white" }}>
+        <div className="GenreTabs white-glassmorphism">
+          <div
+            className={`GenreTab ${selectedTab === "all" ? "active" : ""}`}
+            onClick={() => handleTabClick("all")}
+          >
+            Todos
+          </div>
+          <div
+            className={`GenreTab ${
+              selectedTab === "Musica" ? "active" : "google.com"
+            }`}
+            onClick={() => setMusic(true)}
+          >
+            Musica
+          </div>
+          <div
+            className={`GenreTab ${selectedTab === "Cine" ? "active" : ""}`}
+            onClick={() => handleTabClick("Cine")}
+          >
+            Cine
+          </div>
+          <div
+            className={`GenreTab ${selectedTab === "Comedia" ? "active" : ""}`}
+            onClick={() => setComedia(true)}
+          >
+            Comedia
+          </div>
+          <div
+            className={`GenreTab ${selectedTab === "Deporte" ? "active" : ""}`}
+            onClick={() => handleTabClick("Deporte")}
+          >
+            Deporte
+          </div>
         </div>
-        {/* {value === 0 && <div>Content for Windows tab</div>}
-        {value === 1 && <div>Content for Linux tab</div>}
-        {value === 2 && <div>Content for Mac tab</div>} */}
       </div>
 
-      <div className="card-display">
-        {nfts.map((nft, index) => (
-          <div className="card">
-            <div className="container" key={nft.identifier}>
-              <h3 className="NftName">{nft.name}</h3>
-              <p className="NftDescription">{nft.description}</p>
-              <img className="NftImage" src={nft.image_url} alt={nft.name} />
-            </div>
+      {directListings !== undefined && (
+        <div>
+          <div className="card-display">
+            {directListings.map((directListing) => (
+              <div
+                key={directListing.asset.id}
+                className="card white-glassmorphism"
+              >
+                <div className="container">
+                  <Link to={`/nft/${directListing.asset.id}`}>
+                    <h3 className="NftName">{directListing.asset.name}</h3>
+                    <p className="NftDescription text-justify">
+                      {directListing.asset.description}
+                    </p>
+                    <img
+                      className="NftImage"
+                      src={directListing.asset.image}
+                      alt={directListing.asset.name}
+                    />
+                  </Link>
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
+        </div>
+      )}
     </div>
   );
 };

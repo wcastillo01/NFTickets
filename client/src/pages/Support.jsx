@@ -22,16 +22,16 @@ const Support = () => {
   };
 
   return (
-    <div className="bg-gradient-bg-welcome-light min-h-screen flex justify-center items-center">
+    <div className="min-h-screen flex justify-center items-center">
       <div
-        className="bg-white w-full max-w-xl bg-blue-glassmorphism p-4 rounded-lg border border-gradient-bg-welcome-dark shadow-lg"
+        className="white-glassmorphism w-full max-w-xl bg-blue-glassmorphism p-4 rounded-lg border border-gradient-bg-welcome-dark shadow-lg"
         style={{ marginTop: "-250px" }}
       >
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-2xl font-bold text-black">Escríbenos</h2>
+          <h2 className="text-2xl font-bold text-white">Escríbenos</h2>
           <div className="text-right">
-            <h3 className="text-xl font-bold text-black">Contacto</h3>
-            <p className="text-sm text-gray-500">info@nftickets.com</p>
+            <h3 className="text-xl font-bold text-white">Contacto</h3>
+            <p className="text-sm text-white">info@nftickets.com</p>
           </div>
         </div>
         <form onSubmit={handleSubmit}>

@@ -1,25 +1,55 @@
 .NftName {
-  font-size: 20px;
-  font-weight: bolder;
-}
-
-.NftDescription {
-  font-size: 12px;
-  width: 300px;
-  margin-bottom: 9px;
-  overflow: hidden;
-  line-height: 1.2em; /* Limita el texto a 3 lineas */
-  height: 3.6em;
-}
-
-.NftImage {
-  width: 300px;
-  height: 300px;
+  font-size: 23px;
+  font-weight: 900;
+  margin-top: 5px;
   margin-bottom: 5px;
+
+  color: white;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%; /* Ensure the title takes the full width of its container */
+  display: block;
+}
+
+.card:hover .NftName {
+  overflow: visible; /* Allow content to overflow the container */
+  white-space: nowrap; /* Prevent text wrapping */
+  animation: marquee 10s linear infinite; /* Create a scrolling marquee effect */
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%); /* Negative value for right-to-left scroll */
+  }
 }
 
 .card {
   margin: 10px;
+  width: 360px;
+  height: 450px;
+  overflow: hidden;
+}
+
+.NftDescription {
+  font-size: 12px;
+  width: 330px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  line-height: 1.2em; /* Limita el texto a 3 lineas */
+  height: 3.6em;
+  color: white;
+  justify-content: center;
+}
+
+.NftImage {
+  width: 330px;
+  height: 330px;
+  border-radius: 1%;
+  margin: 0 auto;
 }
 
 .card-display {
@@ -27,8 +57,8 @@
   flex-wrap: wrap;
   justify-content: center;
 
-  padding-left: 12%;
-  padding-right: 12%;
+  padding-left: 10%;
+  padding-right: 10%;
   margin: auto;
 }
 
@@ -36,23 +66,28 @@
   flex: 0 0 25%;
   transition: 0.3s;
   border-radius: 5px;
-  background-color: white;
   margin-bottom: 10px;
   padding: 2px 15px 5px;
-  height: 450px;
+  height: 420px;
 }
 
-.container:hover {
+.card:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
 .GenreTabs {
-  background-color: white;
   border-radius: 50px;
-  width: 30%;
+  width: min(
+    calc(100% / 3),
+    500px
+  ); /* Set width to 1/3 of the screen size or a minimum of 500px */
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
   margin: 0 auto;
   margin-bottom: 20px;
+}
+
+.GenreTab {
+  padding: 10px 20px;
+  cursor: pointer;
 }

@@ -9,40 +9,52 @@ const FAQ = () => {
 
   const faqData = [
     {
-      question: "Where can I get some?",
+      question: "¿Qué son los NFTs?",
       answer:
-        "Sed et erat lacinia nisi commodo sollicitudin ornare in purus. Duis condimentum quam a lacus finibus, a ullamcorper nunc egestas. Nam luctus in libero ac rhoncus. Vestibulum elementum aliquet rutrum. Curabitur pretium eleifend leo, a pulvinar elit imperdiet sed. Vestibulum ut purus eleifend, elementum ex ac, iaculis lorem. Mauris faucibus massa nec nisi iaculis, ac consectetur mi finibus. ",
+        "Los NFTs, o Tokens No Fungibles, son activos digitales únicos que representan la propiedad o prueba de autenticidad de un objeto o pieza de contenido en la cadena de bloques. ",
     },
     {
-      question: "Where does it come from?",
+      question:
+        "¿Cómo puedo estar seguro de que el NFT que estoy comprando es auténtico?",
       answer:
-        "Donec convallis nisi nec neque lacinia imperdiet. Nullam cursus tempor hendrerit. Integer commodo imperdiet faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam neque lacus, aliquam et enim sit amet, venenatis semper orci. Proin a lacinia ligula. Aenean non nisl et nisl bibendum fringilla vel vitae purus. ",
+        "Nuestra plataforma utiliza la tecnología blockchain, que garantiza la autenticidad y la propiedad de los NFTs. Cada NFT tiene un registro único en la cadena de bloques que no puede ser alterado, asegurando su legitimidad.",
     },
     {
-      question: "Why do we use it?",
+      question: "¿Es seguro conectar mi billetera?",
       answer:
-        "In convallis nulla risus, id faucibus mauris rhoncus sed. Aenean sagittis diam eu tortor molestie mattis. Sed vel nunc non urna rutrum tristique. Mauris mollis sapien sapien, ac pretium tellus eleifend sit amet. Fusce iaculis convallis leo, sed convallis augue fringilla non. Quisque at ullamcorper ex, in malesuada est. Vivamus non dolor mauris. Ut commodo sapien eget quam fermentum, non laoreet metus feugiat. ",
+        "Sí, conectar tu monedero es seguro. Utilizamos protocolos de seguridad estándar para garantizar que tus datos y activos estén protegidos. Sin embargo, siempre debes asegurarte de que estás en el sitio web correcto y no en una página de phishing.",
+    },
+
+    {
+      question: "¿Qué es una billetera de criptomonedas y por qué lo necesito?",
+      answer:
+        "Un monedero de criptomonedas es una herramienta digital que te permite almacenar, enviar y recibir criptomonedas y NFTs. Lo necesitas para interactuar con nuestra plataforma y gestionar tus activos digitales.",
+    },
+    {
+      question: "¿En caso de que tenga una duda, que hago?",
+      answer:
+        "En este caso puede dirigirse a una pestaña de soporte, y enviarnos un correo con la duda que usted presente.",
     },
   ];
 
   return (
-    <div className="bg-gradient-bg-welcome-light min-h-screen flex justify-center items-center">
+    <div className="min-h-screen flex justify-center items-center">
       <div
-        className="bg-white w-full max-w-md bg-blue-glassmorphism p-4 rounded-lg border border-gradient-bg-welcome-dark shadow-lg"
-        style={{ marginTop: "-250px" }}
+        className="white-glassmorphism w-full max-w-md p-4 rounded-lg border border-gradient-bg-welcome-dark shadow-lg"
+        style={{ color: "white", marginTop: "-250px" }}
       >
-        <h2 className="text-2xl font-bold mb-8 text-black">
-          Preguntas Frecuentes
-        </h2>
+        <h2 className="text-3xl font-bold mb-8">Preguntas Frecuentes</h2>
         {faqData.map((item, index) => (
           <div
             key={index}
             className="mb-4 cursor-pointer"
             onClick={() => handleAccordionClick(index)}
           >
-            <h3 className="text-lg font-bold text-black">{item.question}</h3>
+            <h3 className="text-lg font-bold">{item.question}</h3>
             {activeIndex === index && (
-              <p className="mt-2 text-sm text-black">{item.answer}</p>
+              <p className="mt-2 text-sm font-light text-justify">
+                {item.answer}
+              </p>
             )}
           </div>
         ))}

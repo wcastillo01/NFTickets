@@ -63,7 +63,7 @@ const Services = () => {
           />
           <ServiceCard
             color="bg-[#F84550]"
-            title="Transacciones más rápidas"
+            title="Vive mejores experiencias"
             icon={<RiHeart2Fill fontSize={21} className="text-white" />}
             subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
             aliquam malesuada lorem, vitae volutpat est facilisis in. Fusce

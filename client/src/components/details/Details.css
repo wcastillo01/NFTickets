@@ -1,0 +1,84 @@
+/* NO UTILIZAR NOMBRES DE TRANSACTION.CSS SE VA A OVERLAPEAR */
+
+.Name {
+  font-size: 40px;
+  font-weight: 750;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  height: 50px;
+  margin-left: 30px;
+  margin-top: 8px;
+  margin-bottom: 15px;
+  position: absolute;
+}
+.LeftTab {
+  max-width: 60%;
+  position: absolute;
+  margin-top: 7%;
+}
+.Image {
+  width: 500px;
+  height: 500px;
+  margin: 0 30px;
+  border-radius: 1%;
+}
+
+.Description {
+  font-size: 18px;
+  text-align: justify;
+
+  max-width: 90%;
+}
+
+.quantity {
+  margin-right: 10px; /* Asegúrate de tener un poco de espacio entre el texto y los botones */
+  font-weight: bold;
+}
+
+.quantity-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.Tab {
+  margin: 0 auto;
+  width: 1000px;
+  height: 600px;
+  font-weight: lighter;
+  border-radius: 1%;
+  display: flex;
+  color: white;
+}
+
+.side-tab {
+  margin-top: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Asegúrate de que los elementos se alineen desde la parte superior */
+  max-height: calc(
+    100% - 150px
+  ); /* Ajusta la altura máxima para permitir desplazamiento si es necesario */
+  margin-left: 55%;
+}
+
+.side-tab button {
+  background-color: #0638e7;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin: 0 10px; /* Añade espacio entre los botones y el número */
+}
+
+.side-tab button:hover {
+  background-color: #2952e3;
+}
+
+.side-tab span {
+  font-size: 18px;
+  font-weight: 500;
+}
