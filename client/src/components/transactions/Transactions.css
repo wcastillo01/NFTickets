@@ -75,8 +75,7 @@
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
-.GenreTabs {
-  border-radius: 50px;
+.SearchBar {
   width: min(
     calc(100% / 3),
     500px
@@ -85,9 +84,4 @@
   justify-content: space-between;
   margin: 0 auto;
   margin-bottom: 20px;
-}
-
-.GenreTab {
-  padding: 10px 20px;
-  cursor: pointer;
 }

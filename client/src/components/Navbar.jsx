@@ -3,8 +3,6 @@ import { HiMenuAlt4 } from "react-icons/hi";
 import { AiOutlineClose } from "react-icons/ai";
 import { ThemeContext } from "../context/ThemeContext";
 import logo from "../../images/logo.svg";
-import Sol from "../../images/Sol.png";
-import Luna from "../../images/Luna.png";
 import { Link } from "react-router-dom";
 import { TransactionContext } from "../context/TransactionContext";
 
@@ -44,6 +42,7 @@ const Navbar = () => {
           { label: "FAQ", path: "/faq" },
           { label: "Soporte", path: "/support" },
           { label: "Mis tickets", path: "/owned" },
+          { label: "Mi cartera", path: "/wallet" },
         ].map((item, index) => (
           <NavBarItem
             key={item.label + index}

@@ -11,6 +11,7 @@ import Services from "./components/Services";
 import { ThirdwebProvider } from "@thirdweb-dev/react";
 import Owned from "./pages/Owned";
 import Validate from "./pages/Validate";
+import Wallet from "./pages/Wallet";
 
 const App = () => {
   return (
@@ -28,7 +29,8 @@ const App = () => {
           <Route path="/services" element={<Services />} />
           <Route path="/nft/:id" element={<Details />} />
           <Route path="/owned" element={<Owned />} />
-          <Route path="/validate" element={<Validate/>} />
+          <Route path="/validate" element={<Validate />} />
+          <Route path="/wallet" element={<Wallet />} />
           {/* <Route path="/test" element={<Test />} /> */}
         </Route>
       </Routes>

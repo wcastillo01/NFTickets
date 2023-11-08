@@ -34,19 +34,18 @@ const Transactions = () => {
     l.asset.name.toLowerCase().startsWith(searchQuery.toLowerCase())
   );
 
-
-  if (isLoading){
+  if (isLoading) {
     return (
-
       <div>
-          <div>
-            <input
-              type="search"
-              value={searchQuery}
-              onChange={handleSearchChange}
-              placeholder="Buscar..."
-            />
-          </div>
+        <div>
+          <input
+            className="rounded-lg SearchBar"
+            type="search"
+            value={searchQuery}
+            onChange={handleSearchChange}
+            placeholder="Buscar..."
+          />
+        </div>
         <div className="flex justify-center items-center py-3">
           <div
             className="animate-spin rounded-full h-32 w-32 border-b-2 border-white-700"
@@ -60,44 +59,15 @@ const Transactions = () => {
   return (
     <div>
       <div>
-        <input type="search" value={searchQuery} onChange={handleSearchChange} className="GenreTabs" placeholder="Buscar..."/>
+        <input
+          className="rounded-lg SearchBar"
+          type="search"
+          value={searchQuery}
+          onChange={handleSearchChange}
+          placeholder="Buscar..."
+        />
       </div>
-      <div style={{ display: "flex", color: "white" }}>
-        <div className="GenreTabs white-glassmorphism">
-          <div
-            className={`GenreTab ${selectedTab === "all" ? "active" : ""}`}
-            onClick={() => handleTabClick("all")}
-          >
-            Todos
-          </div>
-          <div
-            className={`GenreTab ${
-              selectedTab === "Musica" ? "active" : "google.com"
-            }`}
-            onClick={() => setMusic(true)}
-          > 
-            Musica
-          </div>
-          <div
-            className={`GenreTab ${selectedTab === "Cine" ? "active" : ""}`}
-            onClick={() => handleTabClick("Cine")}
-          >
-            Cine
-          </div>
-          <div
-            className={`GenreTab ${selectedTab === "Comedia" ? "active" : ""}`}
-            onClick={() => setComedia(true)}
-          >
-            Comedia
-          </div>
-          <div
-            className={`GenreTab ${selectedTab === "Deporte" ? "active" : ""}`}
-            onClick={() => handleTabClick("Deporte")}
-          >
-            Deporte
-          </div>
-        </div>
-      </div>
+      <div style={{ display: "flex", color: "white" }}></div>
 
       {searchedListings?.length > 0 ? (
         <div>
@@ -125,7 +95,9 @@ const Transactions = () => {
           </div>
         </div>
       ) : (
-        <div>No hay resultados</div>
+        <div className="text-4xl text-white font-bold mt-8 mb-16 text-center ">
+          No hay resultados
+        </div>
       )}
     </div>
   );
