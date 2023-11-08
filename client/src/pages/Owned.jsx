@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useOwnedNFTs, useContract, useAddress } from "@thirdweb-dev/react";
-const ERC1155ContractAddr = "0xb612375913D4bA5d72aa21Cf6567B8BA8724F8Cb";
+import { useOwnedNFTs, useContract, ThirdwebProvider, useAddress, metamaskWallet, ConnectWallet } from "@thirdweb-dev/react";
+const ERC1155ContractAddr = "0x0D3E82CC75045dD5AA114a1B0A53e01a99f4A68C";
 
 export default function Owned() {
   const address = useAddress();
@@ -27,7 +27,26 @@ export default function Owned() {
     return () => clearTimeout(timer);
   }, [data]);
 
-  if (loading) {
+  if (useAddress() === undefined) {
+    return <div className="text-4xl text-white font-bold mt-8 mb-16 text-center">
+      <h1>No estas conectado. Hazlo aqui:</h1>
+      <br />
+      <div>
+        <ThirdwebProvider
+          activeChain="goerli"
+          supportedWallets={[metamaskWallet()]}
+        >
+          <ConnectWallet
+            theme={"dark"}
+            btnTitle={"Conectar billetera"}
+            modalSize={"compact"}
+          />
+        </ThirdwebProvider>
+      </div>
+    </div>;
+  }
+
+  else if (loading) {
     return (
       <div className="flex justify-center items-center py-3">
         <div

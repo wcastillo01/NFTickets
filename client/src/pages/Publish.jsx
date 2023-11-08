@@ -58,82 +58,82 @@ function Test() {
     }
   };
 
-  // if (address !== PublisherWallet)
-  //   return (
-  //     <div className=" flex flex-col justify-center items-center text-white bg-opacity-20 backdrop-blur-md">
-  //       <h1 className="text-4xl font-bold mb-16 mt-8 text-center w-4/5 lg:w-3/5">
-  //         Lo sentimos, aun no tienes acceso para publicar eventos. Suscríbete
-  //         aquí:
-  //       </h1>
+  if (address !== PublisherWallet)
+    return (
+      <div className=" flex flex-col justify-center items-center text-white bg-opacity-20 backdrop-blur-md">
+        <h1 className="text-4xl font-bold mb-16 mt-8 text-center w-4/5 lg:w-3/5">
+          Lo sentimos, aun no tienes acceso para publicar eventos. <br /> Suscríbete
+          aquí:
+        </h1>
 
-  //       <div className="w-full flex justify-center">
-  //         {/* Contenedor de los planes */}
-  //         <div className="flex justify-around w-4/5 max-w-6xl">
-  //           {/* Plan A */}
-  //           <div className="bg-white/20 p-8 py-20 rounded-lg border border-blue-200 shadow-lg w-1/3 mx-4 flex flex-col justify-between backdrop-blur-md">
-  //             <div>
-  //               <h2 className="text-4xl font-bold text-center mb-12">
-  //                 Plan Básico
-  //               </h2>
-  //               <ul className="text-lg mb-8">
-  //                 <li>✓ 2 eventos al año</li>
-  //                 <li>✓ Soporte básico por correo electrónico</li>
-  //                 <li>✓ Flujo de acceso al evento</li>
-  //               </ul>
-  //             </div>
-  //             <button
-  //               type="button"
-  //               className="bg-blue-600 text-white px-10 py-4 rounded-lg hover:bg-blue-700 w-full mt-8"
-  //             >
-  //               Suscribirse
-  //             </button>
-  //           </div>
+        <div className="w-full flex justify-center">
+          {/* Contenedor de los planes */}
+          <div className="flex justify-around w-4/5 max-w-6xl">
+            {/* Plan A */}
+            <div className="bg-white/20 p-8 py-20 rounded-lg border border-blue-200 shadow-lg w-1/3 mx-4 flex flex-col justify-between backdrop-blur-md">
+              <div>
+                <h2 className="text-4xl font-bold text-center mb-12">
+                  Plan Básico
+                </h2>
+                <ul className="text-lg mb-8">
+                  <li>✓ 2 eventos al año</li>
+                  <li>✓ Soporte básico por correo electrónico</li>
+                  <li>✓ Flujo de acceso al evento</li>
+                </ul>
+              </div>
+              <button
+                type="button"
+                className="bg-blue-600 text-white px-10 py-4 rounded-lg hover:bg-blue-700 w-full mt-8"
+              >
+                Suscribirse
+              </button>
+            </div>
 
-  //           {/* Plan B */}
-  //           <div className="bg-white/20 p-8 py-20 rounded-lg border border-blue-200 shadow-lg w-1/3 mx-4 flex flex-col justify-between backdrop-blur-md">
-  //             <div>
-  //               <h2 className="text-4xl font-bold text-center mb-12">
-  //                 Plan Estándar
-  //               </h2>
-  //               <ul className="text-lg mb-8">
-  //                 <li>✓ 6 eventos al año</li>
-  //                 <li>✓ Soporte prioritario</li>
-  //                 <li>✓ Promoción básica de eventos</li>
-  //                 <li>✓ Flujo de acceso al evento</li>
-  //               </ul>
-  //             </div>
-  //             <button
-  //               type="button"
-  //               className="bg-blue-600 text-white px-10 py-4 rounded-lg hover:bg-blue-700 w-full mt-8"
-  //             >
-  //               Suscribirse
-  //             </button>
-  //           </div>
+            {/* Plan B */}
+            <div className="bg-white/20 p-8 py-20 rounded-lg border border-blue-200 shadow-lg w-1/3 mx-4 flex flex-col justify-between backdrop-blur-md">
+              <div>
+                <h2 className="text-4xl font-bold text-center mb-12">
+                  Plan Estándar
+                </h2>
+                <ul className="text-lg mb-8">
+                  <li>✓ 6 eventos al año</li>
+                  <li>✓ Soporte prioritario</li>
+                  <li>✓ Promoción básica de eventos</li>
+                  <li>✓ Flujo de acceso al evento</li>
+                </ul>
+              </div>
+              <button
+                type="button"
+                className="bg-blue-600 text-white px-10 py-4 rounded-lg hover:bg-blue-700 w-full mt-8"
+              >
+                Suscribirse
+              </button>
+            </div>
 
-  //           {/* Plan C */}
-  //           <div className="bg-white/20 p-8 py-20 rounded-lg border border-blue-200 shadow-lg w-1/3 mx-4 flex flex-col justify-between backdrop-blur-md">
-  //             <div>
-  //               <h2 className="text-4xl font-bold text-center mb-12">
-  //                 Plan Premium
-  //               </h2>
-  //               <ul className="text-lg mb-8">
-  //                 <li>✓ Eventos ilimitados</li>
-  //                 <li>✓ Soporte premium 24/7</li>
-  //                 <li>✓ Promoción destacada de eventos</li>
-  //                 <li>✓ Flujo de acceso al evento</li>
-  //               </ul>
-  //             </div>
-  //             <button
-  //               type="button"
-  //               className="bg-blue-600 text-white px-10 py-4 rounded-lg hover:bg-blue-700 w-full mt-8"
-  //             >
-  //               Suscribirse
-  //             </button>
-  //           </div>
-  //         </div>
-  //       </div>
-  //     </div>
-  //   );
+            {/* Plan C */}
+            <div className="bg-white/20 p-8 py-20 rounded-lg border border-blue-200 shadow-lg w-1/3 mx-4 flex flex-col justify-between backdrop-blur-md">
+              <div>
+                <h2 className="text-4xl font-bold text-center mb-12">
+                  Plan Premium
+                </h2>
+                <ul className="text-lg mb-8">
+                  <li>✓ Eventos ilimitados</li>
+                  <li>✓ Soporte premium 24/7</li>
+                  <li>✓ Promoción destacada de eventos</li>
+                  <li>✓ Flujo de acceso al evento</li>
+                </ul>
+              </div>
+              <button
+                type="button"
+                className="bg-blue-600 text-white px-10 py-4 rounded-lg hover:bg-blue-700 w-full mt-8"
+              >
+                Suscribirse
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
 
   return (
     <div>

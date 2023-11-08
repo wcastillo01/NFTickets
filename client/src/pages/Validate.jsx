@@ -11,7 +11,7 @@ export default function Validate() {
   const [qrCodeData, setQrCodeData] = useState("");
   const qrCodeCanvasRef = useRef(null);
 
-  const NameToSearch = "Matematicas";
+  const NameToSearch = "Matematica";
 
   useEffect(() => {
     console.log(data);
@@ -25,17 +25,6 @@ export default function Validate() {
     }
   }, [data]);
 
-  useEffect(() => {
-    if (qrCodeData && isValidated && qrCodeCanvasRef.current) {
-      setQrCodeData(`Validated: ${NameToSearch} owned by ${address}`);
-      QRCode.toCanvas(qrCodeCanvasRef.current, qrCodeData, (error) => {
-        if (error) {
-          console.error("Failed to generate QR code", error);
-        }
-      });
-    }
-  }, [qrCodeData, isValidated]);
-
   return (
     <div>
       {address}
@@ -48,7 +37,6 @@ export default function Validate() {
       ) : (
         <div>No validado</div>
       )}
-      {isLoading && <p>Loading...</p>}
     </div>
   );
 }

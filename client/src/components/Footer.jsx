@@ -26,6 +26,9 @@ const Footer = () => {
         <p className="text-white text-sm text-center">
           Unete en esta nueva tecnologia mas segura que las otras!
         </p>
+        <u>   <a href="/reviews" style={{ fontSize: '12px' }} class="text-white text-center">
+          Haz un review!
+        </a></u>
         <p className="text-white text-sm text-center font-medium mt-2">
           info@nftickets.com
         </p>

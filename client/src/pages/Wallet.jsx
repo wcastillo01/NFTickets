@@ -1,5 +1,12 @@
 import React, { useEffect, useRef } from "react";
-import { fetchRawPredeployMetadata, useAddress } from "@thirdweb-dev/react";
+import { useAddress } from "@thirdweb-dev/react";
+import {
+  ThirdwebProvider,
+  ConnectWallet,
+  metamaskWallet,
+} from "@thirdweb-dev/react";
+
+
 import QRCode from "qrcode";
 import "./Wallet.css";
 export default function Wallet() {
@@ -23,7 +30,22 @@ export default function Wallet() {
   }, [walletAddress]);
 
   if (!walletAddress) {
-    return <p>Loading...</p>;
+    return <div className="text-4xl text-white font-bold mt-8 mb-16 text-center">
+      <h1>No estas conectado. Hazlo aqui:</h1>
+      <br />
+      <div>
+        <ThirdwebProvider
+          activeChain="goerli"
+          supportedWallets={[metamaskWallet()]}
+        >
+          <ConnectWallet
+            theme={"dark"}
+            btnTitle={"Conectar billetera"}
+            modalSize={"compact"}
+          />
+        </ThirdwebProvider>
+      </div>
+    </div>;
   }
 
   return (

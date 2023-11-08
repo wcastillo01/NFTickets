@@ -16,6 +16,7 @@
   overflow: visible; /* Allow content to overflow the container */
   white-space: nowrap; /* Prevent text wrapping */
   animation: marquee 10s linear infinite; /* Create a scrolling marquee effect */
+  animation-delay: 1s;
 }
 
 @keyframes marquee {
