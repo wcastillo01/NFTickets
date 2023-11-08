@@ -18,14 +18,32 @@ const Transactions = () => {
     error,
   } = useValidDirectListings(contract);
 
-  console.log({ directListings }); //TESTING TO SHOW DATA IN CONSOLE
+  const [searchQuery, setSearchQuery] = useState("");
+
+  // console.log(directListings); //TESTING TO SHOW DATA IN CONSOLE
 
   const handleTabClick = (category) => {
     setSelectedTab(category);
   };
 
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const searchedListings = directListings?.filter((l) =>
+    l.asset.name.toLowerCase().startsWith(searchQuery.toLowerCase())
+  );
+
   return (
     <div>
+      <div>
+        <input
+          type="search"
+          value={searchQuery}
+          onChange={handleSearchChange}
+          placeholder="Buscar..."
+        />
+      </div>
       <div style={{ display: "flex", color: "white" }}>
         <div className="GenreTabs white-glassmorphism">
           <div
@@ -63,10 +81,10 @@ const Transactions = () => {
         </div>
       </div>
 
-      {directListings !== undefined && (
+      {searchedListings?.length > 0 ? (
         <div>
           <div className="card-display">
-            {directListings.map((directListing) => (
+            {searchedListings.map((directListing) => (
               <div
                 key={directListing.asset.id}
                 className="card white-glassmorphism"
@@ -88,6 +106,8 @@ const Transactions = () => {
             ))}
           </div>
         </div>
+      ) : (
+        <div>No hay resultados</div>
       )}
     </div>
   );
