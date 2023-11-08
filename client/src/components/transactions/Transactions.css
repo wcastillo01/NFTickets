@@ -1,6 +1,6 @@
 .NftName {
   font-size: 23px;
-  font-weight: 900;
+  font-weight: bold;
   margin-top: 5px;
   margin-bottom: 5px;
 
@@ -36,7 +36,7 @@
 }
 
 .NftDescription {
-  font-size: 12px;
+  font-size: 14px;
   width: 330px;
   margin-bottom: 12px;
   overflow: hidden;

@@ -14,8 +14,8 @@ const ServiceCard = ({ color, title, icon, subtitle }) => {
         {icon}
       </div>
       <div className="ml-5 flex flex-col flex-1">
-        <h3 className="mt-2 text-white text-lg">{title}</h3>
-        <p className="mt-1 text-white text-sm md:w-9/12">{subtitle}</p>
+        <h3 className="mt-2 text-xl text-white font-bold">{title}</h3>
+        <p className="mt-1 text-white font-light text-sm md:w-9/12">{subtitle}</p>
       </div>
     </div>
   );
@@ -43,7 +43,7 @@ const Services = () => {
         </div>
 
         <div className="flex-1 flex flex-col justify-start items-center">
-          <ServiceCard
+          <ServiceCard 
             color="bg-[#2952E3]"
             title="Seguridad garantizada"
             icon={<BsShieldFillCheck fontSize={21} className="text-white" />}

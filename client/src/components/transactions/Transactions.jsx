@@ -80,7 +80,7 @@ const Transactions = () => {
                 <div className="container">
                   <Link to={`/nft/${directListing.asset.id}`}>
                     <h3 className="NftName">{directListing.asset.name}</h3>
-                    <p className="NftDescription text-justify">
+                    <p className="NftDescription font-light text-justify">
                       {directListing.asset.description}
                     </p>
                     <img

@@ -90,10 +90,8 @@ export default function Details() {
 
       <div className="side-tab">
         <div className="event-description-container">
+          <p className="font-bold"> Descripción:</p>
           <p className="Description">
-            <b>
-              Descripcion: <br />
-            </b>
             {nfts?.description}
           </p>
         </div>
