@@ -1,24 +1,5 @@
-.wallet-container {
-  text-align: center;
-}
-
 .qr-container {
   display: flex;
   justify-content: center; /* This will center the canvas horizontally */
   align-items: center; /* This will center the canvas vertically */
-  height: 100%; /* Set a height or min-height to ensure there's space for vertical centering */
-}
-
-/* If .eth-card is not already defined, you may need to adjust the CSS */
-.eth-card {
-  /* Styling for your canvas */
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  transition: 0.3s;
-  border-radius: 5px; /* Rounded corners */
-}
-
-/* Since we are centering the QR code, remove the margins if they are no longer needed */
-.text-4xl {
-  margin-top: 0;
-  margin-bottom: 0;
 }

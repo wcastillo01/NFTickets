@@ -8,8 +8,8 @@ import {
 import "./Details.css";
 import axios from "axios";
 
-const ERC1155ContractAddr = "0xb612375913D4bA5d72aa21Cf6567B8BA8724F8Cb";
-const MarketplaceAddr = "0x3F4B384A7a8dE244434f3d82475304Dd1cEc4681";
+const ERC1155ContractAddr = "0x0D3E82CC75045dD5AA114a1B0A53e01a99f4A68C";
+const MarketplaceAddr = "0xe8ab090820BAf2B9E1518032D69B0a765bbc7474";
 export default function Details() {
   const { id } = useParams();
   const [nfts, setNfts] = useState();

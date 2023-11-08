@@ -34,7 +34,7 @@ export default function Wallet() {
       </h1>
       <div className="qr-container">
         <canvas
-          className="p-3 rounded-xl eth-card mt-8"
+          className="p-3 rounded-xl eth-card "
           ref={qrCodeCanvasRef}
         ></canvas>
       </div>

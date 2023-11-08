@@ -3,7 +3,7 @@ import "./Transactions.css";
 import { Link } from "react-router-dom";
 import { useValidDirectListings, useContract } from "@thirdweb-dev/react";
 
-const MarketplaceAddr = "0x3F4B384A7a8dE244434f3d82475304Dd1cEc4681";
+const MarketplaceAddr = "0xe8ab090820BAf2B9E1518032D69B0a765bbc7474";
 const Transactions = () => {
   const [nfts, setNfts] = useState([]);
   const [selectedTab, setSelectedTab] = useState("all");

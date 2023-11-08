@@ -23,8 +23,6 @@ export default function Owned() {
         setLoading(false);
       }, 5000); // 5000 milliseconds (5 seconds)
     }
-    
-  
 
     return () => clearTimeout(timer);
   }, [data]);
@@ -65,7 +63,7 @@ export default function Owned() {
         data !== undefined && (
           <div>
             <h1 className="text-4xl text-white font-bold mt-8 mb-16 text-center ">
-              Estos son los tickets que tienes disponibles:
+              Tienes los siguientes tickets disponibles:
             </h1>
             <div className="card-display">
               {data.map((data) => (
