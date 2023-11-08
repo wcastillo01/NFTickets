@@ -32,7 +32,8 @@ const FAQ = () => {
     },
     {
       question: "¿En caso de que tenga una duda, que hago?",
-      answer: "En este caso puede dirigirse a una pestaña de soporte, y enviarnos un correo con la duda que usted presente.",
+      answer:
+        "En este caso puede dirigirse a una pestaña de soporte, y enviarnos un correo con la duda que usted presente.",
     },
   ];
 
@@ -42,18 +43,18 @@ const FAQ = () => {
         className="white-glassmorphism w-full max-w-md p-4 rounded-lg border border-gradient-bg-welcome-dark shadow-lg"
         style={{ color: "white", marginTop: "-250px" }}
       >
-        <h2 className="text-3xl font-extrabold mb-8">
-          Preguntas Frecuentes
-        </h2>
+        <h2 className="text-3xl font-bold mb-8">Preguntas Frecuentes</h2>
         {faqData.map((item, index) => (
           <div
             key={index}
             className="mb-4 cursor-pointer"
             onClick={() => handleAccordionClick(index)}
           >
-            <h3 className="text-lg font-extrabold">{item.question}</h3>
+            <h3 className="text-lg font-bold">{item.question}</h3>
             {activeIndex === index && (
-              <p className="mt-2 text-sm font-light text-justify">{item.answer}</p>
+              <p className="mt-2 text-sm font-light text-justify">
+                {item.answer}
+              </p>
             )}
           </div>
         ))}
