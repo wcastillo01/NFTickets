@@ -10,8 +10,7 @@ import Services from "./components/Services";
 // import Test from "./components/Test";
 import { ThirdwebProvider } from "@thirdweb-dev/react";
 import Owned from "./pages/Owned";
-import Validate from "./pages/Validate";
-import Validate2 from "./pages/validate/Validate2";
+import Validate from "./pages/validate/Validate";
 import Wallet from "./pages/Wallet";
 import Reviews from "./pages/Reviews";
 
@@ -34,7 +33,6 @@ const App = () => {
           <Route path="/validate" element={<Validate />} />
           <Route path="/wallet" element={<Wallet />} />
           <Route path="/reviews" element={<Reviews />} />
-          <Route path="/test" element={<Validate2 />} />
         </Route>
       </Routes>
     </ThirdwebProvider>

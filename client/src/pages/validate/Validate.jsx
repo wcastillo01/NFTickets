@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Html5QrcodeScanner } from "html5-qrcode";
 import { useAddress, useContract, } from "@thirdweb-dev/react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import "./validate.css";
 
 const ERC1155ContractAddr = "0x0D3E82CC75045dD5AA114a1B0A53e01a99f4A68C";
@@ -66,6 +67,10 @@ export default function Details() {
         return false;
     }
 
+    function reload() {
+        location.reload();
+    }
+
     return (
         <div>
             <div style={{width: '40%', minWidth: '300px', margin: '0 auto', marginTop: '2%', color: 'white'}}>
@@ -77,11 +82,16 @@ export default function Details() {
                         <div className="back">
                             <div className="check"></div>
                         </div>
-                        <button style={{ marginTop: '5%' }} className="button text-black"> Test another one</button>  
+                        <div>
+                            <button style={{ marginTop: '5%' }} className="button text-black" onClick={reload}> Test another one</button> 
+                        </div>
+                                 
                        </div>) 
                     : (<div>
                         <div className="close"></div>
-                        <button style={{marginTop: '5%'}} className="button text-black"> Test another one</button>  
+                        <div>
+                            <button style={{ marginTop: '5%'}} className="button text-black" onClick={reload} > Test another one</button>
+                        </div>
                     </div>)}
                  </div>)
                 : (<div id="reader"></div>)}  
