@@ -3,12 +3,14 @@ import { Html5QrcodeScanner } from "html5-qrcode";
 import { useAddress, useContract, } from "@thirdweb-dev/react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import "./validate.css";
 
 const ERC1155ContractAddr = "0x0D3E82CC75045dD5AA114a1B0A53e01a99f4A68C";
 const MarketplaceAddr = "0xe8ab090820BAf2B9E1518032D69B0a765bbc7474";
 
 export default function Details() {
+    const { id } = useParams();
     const [nfts, setNfts] = useState(null); // Initialize as null
     const [owner, setOwner] = useState(null); // Initialize as null
     const address = useAddress()?.toLowerCase();
@@ -35,7 +37,7 @@ export default function Details() {
         const fetchData = async () => {
             try {
                 const response = await axios.get(
-                    `https://testnets-api.opensea.io/v2/chain/goerli/contract/${ERC1155ContractAddr}/nfts/3`
+                    `https://testnets-api.opensea.io/v2/chain/goerli/contract/${ERC1155ContractAddr}/nfts/${id}`
                 );
                 const data = response.data;
 

@@ -1,15 +1,19 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import {
+  useAddress,
   useBuyDirectListing,
   useContract,
   Web3Button,
 } from "@thirdweb-dev/react";
 import "./Details.css";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const ERC1155ContractAddr = "0x0D3E82CC75045dD5AA114a1B0A53e01a99f4A68C";
 const MarketplaceAddr = "0xe8ab090820BAf2B9E1518032D69B0a765bbc7474";
+const PublisherWallet = "0xb775800d0939f219BeF0e47B4aFFD848B430D3AC";
+
 export default function Details() {
   const { id } = useParams();
   const [nfts, setNfts] = useState();
@@ -20,6 +24,8 @@ export default function Details() {
   const increaseQuantity = () => {
     setTicketQuantity((prevQuantity) => prevQuantity + 1);
   };
+
+  const connectedUser = useAddress();
 
   const decreaseQuantity = () => {
     if (ticketQuantity > 1) {
@@ -69,6 +75,13 @@ export default function Details() {
     };
     fetchData();
   }, []);
+
+  function isAdmin(){
+    if (connectedUser === PublisherWallet) {
+      return true;
+    }
+    return false;
+  }
 
   if (loading == true) {
     return (
@@ -127,6 +140,13 @@ export default function Details() {
           >
             Comprar ahora
           </Web3Button>
+          {isAdmin()
+          ? (<Link to={`/validate/${nfts.identifier}`}>
+              <button className="validate button">Validar</button>
+            </Link>)
+          : (<div></div>)}	
+         
+          
         </div>
       </div>
     </div>

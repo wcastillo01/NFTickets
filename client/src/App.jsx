@@ -30,7 +30,7 @@ const App = () => {
           <Route path="/services" element={<Services />} />
           <Route path="/nft/:id" element={<Details />} />
           <Route path="/owned" element={<Owned />} />
-          <Route path="/validate" element={<Validate />} />
+          <Route path="/validate/:id" element={<Validate />} />
           <Route path="/wallet" element={<Wallet />} />
           <Route path="/reviews" element={<Reviews />} />
         </Route>
