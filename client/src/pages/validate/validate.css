@@ -2,12 +2,12 @@
     --borderWidth: 28px;
     --height: 96px;
     --width: 48px;
-    --borderColor: #B0D9B1;
+    --borderColor: white;
 }
 
 
 .back {
-    background-color: #79AC78;
+    background-color: #4CAF50;
     border-radius: 50%;
     width: 400px;
     height: 400px;
@@ -31,7 +31,7 @@
     height: 400px;
     width: 400px;
     text-align: center;
-    background: #00558a;
+    background: #a41f3f;
     border-radius: 50%;
     position: relative;
     margin: 0 auto;

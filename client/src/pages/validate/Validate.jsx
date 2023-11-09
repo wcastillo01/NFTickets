@@ -13,8 +13,7 @@ export default function Details() {
     const [owner, setOwner] = useState(null); // Initialize as null
     const address = useAddress()?.toLowerCase();
     const [scanResult, setScanResult] = useState(null);
-    const [quantity, setQuantity] = useState(0); // Initialize as null
-
+    const [quantity, setQuantity] = useState(0);
 
     useEffect(() => {
 
@@ -41,7 +40,6 @@ export default function Details() {
                 const data = response.data;
 
                 console.log(data);
-                setNfts(data.nft);
                 if (data.nft.owners) {
                     setOwner(data.nft.owners);
                 }
@@ -54,12 +52,13 @@ export default function Details() {
         fetchData();
     }, []);
 
+
     function test() {
         if (owner !== null && scanResult !== null) { 
             for (let i = 0; i < owner.length; i++) {
                 if (scanResult === owner[i].address) {
-                    console.log("Address matched with quantity: " + owner[i].quantity);
-                    return true; 
+                    console.log("Address found with "+ owner[i].quantity);
+                    return true;                    
                 }
             }
         }
@@ -83,6 +82,7 @@ export default function Details() {
                             <div className="check"></div>
                         </div>
                         <div>
+                            <p className="text-center text-2xl font-bold mt-6 ">Pueden pasar  </p>
                             <button style={{ marginTop: '5%' }} className="button text-black" onClick={reload}> Test another one</button> 
                         </div>
                                  
@@ -90,6 +90,7 @@ export default function Details() {
                     : (<div>
                         <div className="close"></div>
                         <div>
+                            <p className="text-center text-2xl font-bold mt-6 "> No pueden pasar  </p>
                             <button style={{ marginTop: '5%'}} className="button text-black" onClick={reload} > Test another one</button>
                         </div>
                     </div>)}
