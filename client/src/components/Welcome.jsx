@@ -58,9 +58,10 @@ const Welcome = () => {
             Compra Tickets <br /> para todos tus eventos favoritos!
           </h1>
           <p className="text-left mt-5 text-white font-light md:w-9/12 w-11/12 text-base">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-            condimentum tincidunt tortor, id lacinia orci ultrices a. Curabitur
-            dictum lectus nec libero dapibus.
+            Descubre una selección exclusiva de eventos con NFTickets. Fácil,
+            rápido y seguro. Encuentra tu próxima experiencia en vivo, compra
+            con cripto y prepárate para momentos inolvidables. Tu entrada al
+            futuro del entretenimiento está aquí.
           </p>
           {!currentAccount && (
             <ThirdwebProvider

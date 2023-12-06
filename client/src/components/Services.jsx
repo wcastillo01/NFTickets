@@ -14,8 +14,8 @@ const ServiceCard = ({ color, title, icon, subtitle }) => {
         {icon}
       </div>
       <div className="ml-5 flex flex-col flex-1">
-        <h3 className="mt-2 text-xl text-white font-bold">{title}</h3>
-        <p className="mt-1 text-white font-light text-sm md:w-9/12">{subtitle}</p>
+        <h3 className="mt-2 text-white text-lg">{title}</h3>
+        <p className="mt-1 text-white text-sm md:w-9/12">{subtitle}</p>
       </div>
     </div>
   );
@@ -36,38 +36,32 @@ const Services = () => {
             seguimos mejorando
           </h1>
           <p className="text-left my-2 text-white font-light md:w-9/12 w-11/12 text-base">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
-            aliquam malesuada lorem, vitae volutpat est facilisis in. Fusce
-            ullamcorper semper efficitur.
+            Explora la vanguardia de eventos con NFTickets. Continuamos
+            innovando en accesibilidad y ofertas exclusivas, asegurando que tu
+            experiencia sea segura, única y memorable.
           </p>
         </div>
 
         <div className="flex-1 flex flex-col justify-start items-center">
-          <ServiceCard 
+          <ServiceCard
             color="bg-[#2952E3]"
             title="Seguridad garantizada"
             icon={<BsShieldFillCheck fontSize={21} className="text-white" />}
-            subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
-            aliquam malesuada lorem, vitae volutpat est facilisis in. Fusce
-            ullamcorper semper efficitur."
+            subtitle="Compra segura de tickets NFTs en blockchain. Autenticidad y exclusividad en cada entrada donde Protegemos tu inversión con la mejor tecnología."
             style={{ width: "300px" }}
           />
           <ServiceCard
             color="bg-[#8945F8]"
             title="Mejores transacciones"
             icon={<BiSearchAlt fontSize={21} className="text-white" />}
-            subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
-            aliquam malesuada lorem, vitae volutpat est facilisis in. Fusce
-            ullamcorper semper efficitur."
+            subtitle="Adquiere tickets NFTs rápidamente, con una transacción segura, sin esperas y entradas garantizadas para eventos deportivos, conciertos, y más."
             style={{ width: "300px" }}
           />
           <ServiceCard
             color="bg-[#F84550]"
             title="Vive mejores experiencias"
             icon={<RiHeart2Fill fontSize={21} className="text-white" />}
-            subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
-            aliquam malesuada lorem, vitae volutpat est facilisis in. Fusce
-            ullamcorper semper efficitur."
+            subtitle="Accede a eventos inolvidables con NFTickets. Cada compra eleva tu mundo de entretenimiento a un nivel superior. Calidad y satisfacción en cada evento."
             style={{ width: "300px" }}
           />
         </div>

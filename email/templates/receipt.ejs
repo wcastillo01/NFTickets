@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gracias por tu compra - NFTickets</title>
+    <style>
+        body,
+        p {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e2e1e1;
+            color: #333;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background-color: #0c95c7;
+            padding: 10px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .content {
+            padding: 20px;
+            background-color: #fff;
+        }
+
+        .content p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #71b03f;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="https://i.postimg.cc/0j5qR6KX/NFTickets.png" alt="NFTickets Logo"
+                style="max-width: 200px; display: block; margin: 0 auto" />
+            <h1 style="margin-top: 20px">Gracias por tu compra</h1>
+        </div>
+        <div class="content">
+            <p>Estimado(a) Usuario<strong>
+        
+                </strong>,</p>
+            <p>Gracias por adquirir tu ticket para <strong>
+                    <%= ticketTitle %>
+                </strong>.</p>
+            <p>Detalles de tu compra:</p>
+            <ul>
+                <li>Cantidad de Boletas: <strong>
+                        <%= ticketQuantity %>
+                    </strong></li>
+                <li>Hora del Evento: <strong>
+                        <%= eventTime %>
+                    </strong></li>
+                <li>Lugar del Evento: <strong>
+                        <%= eventLocation %>
+                    </strong></li>
+            </ul>
+            <p>¡Esperamos que disfrutes del evento!</p>
+            <p>Atentamente,</p>
+            <p>El equipo de NFTickets</p>
+
+            <hr />
+            <h5>Recuerda que puedes visualizar tus Tickets en la pestaña de <b>Mis Tickets</b></h5>
+            <h5>Ademas para acceder al evento debes usar la pestaña de <b>Mi Cartera</b></h5>
+            
+        </div>
+        <div class="footer">
+            <p>NFTickets | Todos los derechos reservados</p>
+        </div>
+    </div>
+</body>
+
+</html>

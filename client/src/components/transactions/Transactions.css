@@ -85,3 +85,16 @@
   margin: 0 auto;
   margin-bottom: 20px;
 }
+
+.Nftquantity {
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 5px;
+}
+.NftImage2 {
+  width: 330px;
+  height: 305px;
+  border-radius: 1%;
+  margin: 0 auto;
+}

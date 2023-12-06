@@ -9,6 +9,8 @@ import {
 import "./Details.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { toast } from 'react-toastify';
+import { useNavigate } from "react-router-dom";
 
 const ERC1155ContractAddr = "0x0D3E82CC75045dD5AA114a1B0A53e01a99f4A68C";
 const MarketplaceAddr = "0xe8ab090820BAf2B9E1518032D69B0a765bbc7474";
@@ -26,6 +28,7 @@ export default function Details() {
   };
 
   const connectedUser = useAddress();
+  const navigate = useNavigate();
 
   const decreaseQuantity = () => {
     if (ticketQuantity > 1) {
@@ -75,6 +78,26 @@ export default function Details() {
     };
     fetchData();
   }, []);
+
+  function sendEmail() {
+    axios.post("http://localhost:777/send-email", {
+      email: "wcastillopujols1@gmail.com", // HARDCODED
+      ticketTitle: nfts.name,
+      ticketQuantity: ticketQuantity.toString(),
+      eventTime: nfts.date,
+      eventLocation: nfts.location,
+    })
+  }
+
+
+  console.log(ticketQuantity.toString());
+
+  function redirect() {
+    // Wait 1200 ms before redirecting
+    setTimeout(function () {
+      navigate("/owned");
+    }, 1200);
+  }
 
   function isAdmin(){
     if (connectedUser === PublisherWallet) {
@@ -130,13 +153,32 @@ export default function Details() {
         <div style={{ textAlign: "Justify" }}>
           <Web3Button
             contractAddress={MarketplaceAddr}
-            action={() =>
-              buyDirectListing({
+            action={() => {
+            const buyPromise =  buyDirectListing({
                 listingId: nfts.identifier,
                 quantity: ticketQuantity.toString(),
                 buyer: "0xffe227D2451316f929c49444Fe3B7117639aa3A0",
-              })
+              }).then((res) => {
+                sendEmail();
+              });
+              toast.promise(
+                buyPromise,
+                {
+                  pending: 'Procesando...',
+                  success: 'Compra exitosa!',
+                  error: 'Error al comprar'
+                },
+                {
+                  style: {
+                    position: "bottom-right",
+                    minWidth: '250px',
+                  }
+                }
+              ).then(() => {
+                redirect();
+              });
             }
+          }
           >
             Comprar ahora
           </Web3Button>

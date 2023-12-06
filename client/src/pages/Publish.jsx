@@ -8,14 +8,14 @@ import React, { useState } from "react";
 import { TextField, Button, Container } from "@mui/material";
 import { useCreateDirectListing } from "@thirdweb-dev/react";
 import { ethers } from "ethers";
+import { toast } from "react-toastify";
 
-// Your smart contract address
 const ERC1155ContractAddr = "0x0D3E82CC75045dD5AA114a1B0A53e01a99f4A68C";
 const MarketplaceAddr = "0xe8ab090820BAf2B9E1518032D69B0a765bbc7474";
 const PublisherWallet = "0xb775800d0939f219BeF0e47B4aFFD848B430D3AC";
 
 function Test() {
-  const address = useAddress();
+  let address = useAddress();
   const { contract } = useContract(ERC1155ContractAddr);
   const { mutateAsync: mintNft, isLoading } = useMintNFT(contract);
   const { contract: marketplace } = useContract(
@@ -34,6 +34,7 @@ function Test() {
     price: "",
     image: "",
     location: "",
+    agreedTerms: false,
   });
 
   const handleChange = (e) => {
@@ -43,6 +44,51 @@ function Test() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+  };
+  const handleCreateEvent = () => {
+    if (
+      !formData.name ||
+      !formData.description ||
+      !formData.supply ||
+      !formData.eventDate ||
+      !formData.price ||
+      !formData.image ||
+      !formData.location
+    ) {
+      toast.error("Todos los campos deben estar llenos.", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: false,
+        progress: undefined,
+        theme: "colored",
+      });
+      return;
+    }
+    mintNft({
+      metadata: {
+        name: formData.name,
+        description: formData.description,
+        image: formData.image,
+        eventDate: formData.eventDate,
+        genre: formData.genre,
+        price: formData.price,
+        location: formData.location,
+      },
+      supply: formData.supply,
+      to: PublisherWallet,
+    })
+      .then((result) => {
+        return createDirectListing({
+          assetContractAddress: ERC1155ContractAddr,
+          tokenId: ethers.BigNumber.from(result.id._hex).toString(),
+          pricePerToken: formData.price,
+          quantity: formData.supply,
+        });
+      })
+      .catch(console.error);
   };
 
   const handleImageChange = (e) => {
@@ -62,8 +108,8 @@ function Test() {
     return (
       <div className=" flex flex-col justify-center items-center text-white bg-opacity-20 backdrop-blur-md">
         <h1 className="text-4xl font-bold mb-16 mt-8 text-center w-4/5 lg:w-3/5">
-          Lo sentimos, aun no tienes acceso para publicar eventos. <br /> Suscríbete
-          aquí:
+          Lo sentimos, aun no tienes acceso para publicar eventos. <br />{" "}
+          Suscríbete aquí:
         </h1>
 
         <div className="w-full flex justify-center">
@@ -79,6 +125,7 @@ function Test() {
                   <li>✓ 2 eventos al año</li>
                   <li>✓ Soporte básico por correo electrónico</li>
                   <li>✓ Flujo de acceso al evento</li>
+                  <li className="text-center pt-8 font-bold">2999 DOP/Año</li>
                 </ul>
               </div>
               <button
@@ -100,6 +147,7 @@ function Test() {
                   <li>✓ Soporte prioritario</li>
                   <li>✓ Promoción básica de eventos</li>
                   <li>✓ Flujo de acceso al evento</li>
+                  <li className="text-center pt-8 font-bold">6999 DOP/Año</li>
                 </ul>
               </div>
               <button
@@ -121,6 +169,7 @@ function Test() {
                   <li>✓ Soporte premium 24/7</li>
                   <li>✓ Promoción destacada de eventos</li>
                   <li>✓ Flujo de acceso al evento</li>
+                  <li className="text-center pt-8 font-bold">11999 DOP/Año</li>
                 </ul>
               </div>
               <button
@@ -269,32 +318,7 @@ function Test() {
               <div style={{ textAlign: "center", marginTop: "10px" }}>
                 <Web3Button
                   contractAddress={ERC1155ContractAddr}
-                  action={() =>
-                    mintNft({
-                      metadata: {
-                        name: formData.name,
-                        description: formData.description,
-                        image: formData.image,
-                        eventDate: formData.eventDate,
-                        genre: formData.genre,
-                        price: formData.price,
-                        location: formData.location,
-                      },
-                      supply: formData.supply,
-                      to: PublisherWallet,
-                    })
-                      .then((result) => {
-                        return createDirectListing({
-                          assetContractAddress: ERC1155ContractAddr,
-                          tokenId: ethers.BigNumber.from(
-                            result.id._hex
-                          ).toString(),
-                          pricePerToken: formData.price,
-                          quantity: formData.supply,
-                        });
-                      })
-                      .catch(console.error)
-                  }
+                  action={() => handleCreateEvent()}
                 >
                   Crear NFT
                 </Web3Button>

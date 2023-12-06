@@ -13,6 +13,8 @@ import Owned from "./pages/Owned";
 import Validate from "./pages/validate/Validate";
 import Wallet from "./pages/Wallet";
 import Reviews from "./pages/Reviews";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
   return (
@@ -35,6 +37,7 @@ const App = () => {
           <Route path="/reviews" element={<Reviews />} />
         </Route>
       </Routes>
+      <ToastContainer position="bottom-right" autoClose={1200} />
     </ThirdwebProvider>
   );
 };

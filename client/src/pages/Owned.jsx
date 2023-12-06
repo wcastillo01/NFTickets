@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useOwnedNFTs, useContract, ThirdwebProvider, useAddress, metamaskWallet, ConnectWallet } from "@thirdweb-dev/react";
+import {
+  useOwnedNFTs,
+  useContract,
+  ThirdwebProvider,
+  useAddress,
+  metamaskWallet,
+  ConnectWallet,
+} from "@thirdweb-dev/react";
 const ERC1155ContractAddr = "0x0D3E82CC75045dD5AA114a1B0A53e01a99f4A68C";
 
 export default function Owned() {
@@ -28,25 +35,25 @@ export default function Owned() {
   }, [data]);
 
   if (useAddress() === undefined) {
-    return <div className="text-4xl text-white font-bold mt-8 mb-16 text-center">
-      <h1>No estas conectado. Hazlo aqui:</h1>
-      <br />
-      <div>
-        <ThirdwebProvider
-          activeChain="goerli"
-          supportedWallets={[metamaskWallet()]}
-        >
-          <ConnectWallet
-            theme={"dark"}
-            btnTitle={"Conectar billetera"}
-            modalSize={"compact"}
-          />
-        </ThirdwebProvider>
+    return (
+      <div className="text-4xl text-white font-bold mt-8 mb-16 text-center">
+        <h1>No estas conectado. Hazlo aqui:</h1>
+        <br />
+        <div>
+          <ThirdwebProvider
+            activeChain="goerli"
+            supportedWallets={[metamaskWallet()]}
+          >
+            <ConnectWallet
+              theme={"dark"}
+              btnTitle={"Conectar billetera"}
+              modalSize={"compact"}
+            />
+          </ThirdwebProvider>
+        </div>
       </div>
-    </div>;
-  }
-
-  else if (loading) {
+    );
+  } else if (loading) {
     return (
       <div className="flex justify-center items-center py-3">
         <div
@@ -56,7 +63,7 @@ export default function Owned() {
       </div>
     );
   }
-
+  console.log(data);
   return (
     <div>
       {showMessage ? (
@@ -95,8 +102,11 @@ export default function Owned() {
                     <p className="NftDescription">
                       {data.metadata.description}
                     </p>
+                    <p className="Nftquantity">
+                      Cantidad de boletas: {data.quantityOwned}
+                    </p>
                     <img
-                      className="NftImage"
+                      className="NftImage2"
                       src={data.metadata.image}
                       alt={data.metadata.name}
                     />
