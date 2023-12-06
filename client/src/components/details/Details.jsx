@@ -12,8 +12,8 @@ import { Link } from "react-router-dom";
 import { toast } from 'react-toastify';
 import { useNavigate } from "react-router-dom";
 
-const ERC1155ContractAddr = "0x0D3E82CC75045dD5AA114a1B0A53e01a99f4A68C";
-const MarketplaceAddr = "0xe8ab090820BAf2B9E1518032D69B0a765bbc7474";
+const ERC1155ContractAddr = "0xcdc33713EC1Cc323e4CC2B23Ae2f90ecabB511Df";
+const MarketplaceAddr = "0xbF99330e86cF7A42a20263bEb5daA6B12bBb638E";
 const PublisherWallet = "0xb775800d0939f219BeF0e47B4aFFD848B430D3AC";
 
 export default function Details() {
@@ -68,10 +68,10 @@ export default function Details() {
           price: metadata.data.price,
           cantidad: metadata.data.supply,
         });
-        console.log(metadata.data.eventDate);
-        console.log(metadata.data.location);
+        // console.log(metadata.data.eventDate);
+        // console.log(metadata.data.location);
         setLoading(false);
-        console.log(data);
+        // console.log(data);
       } catch (err) {
         console.error(err);
       }
@@ -89,14 +89,11 @@ export default function Details() {
     })
   }
 
-
-  console.log(ticketQuantity.toString());
-
   function redirect() {
     // Wait 1200 ms before redirecting
     setTimeout(function () {
       navigate("/owned");
-    }, 1200);
+    }, 3000);
   }
 
   function isAdmin(){
@@ -157,7 +154,7 @@ export default function Details() {
             const buyPromise =  buyDirectListing({
                 listingId: nfts.identifier,
                 quantity: ticketQuantity.toString(),
-                buyer: "0xffe227D2451316f929c49444Fe3B7117639aa3A0",
+                buyer: connectedUser,
               }).then((res) => {
                 sendEmail();
               });

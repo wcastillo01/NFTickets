@@ -15,8 +15,7 @@ const companyCommonStyles =
   "min-h-[70px] sm:px-0 px-2 sm:min-w-[120px] flex justify-center items-center border-[0.5px] border-white-400 text-sm font-light text-white";
 
 const handleWalletConnection = () => {
-  connectWallet();
-  window.location.reload();
+  connectWallet().window.location.reload();
 };
 
 const Input = ({ placeholder, name, type, value, handleChange }) => (

@@ -7,7 +7,7 @@ import {
   metamaskWallet,
   ConnectWallet,
 } from "@thirdweb-dev/react";
-const ERC1155ContractAddr = "0x0D3E82CC75045dD5AA114a1B0A53e01a99f4A68C";
+const ERC1155ContractAddr = "0xcdc33713EC1Cc323e4CC2B23Ae2f90ecabB511Df";
 
 export default function Owned() {
   const address = useAddress();
@@ -34,7 +34,7 @@ export default function Owned() {
     return () => clearTimeout(timer);
   }, [data]);
 
-  if (useAddress() === undefined) {
+  if (address === undefined) {
     return (
       <div className="text-4xl text-white font-bold mt-8 mb-16 text-center">
         <h1>No estas conectado. Hazlo aqui:</h1>
@@ -63,7 +63,6 @@ export default function Owned() {
       </div>
     );
   }
-  console.log(data);
   return (
     <div>
       {showMessage ? (
@@ -80,7 +79,7 @@ export default function Owned() {
             transform: "translate(-50%, -50%)",
           }}
         >
-          Lo sentimos, aun no tienes boletos para ningun evento. Compra alguno{" "}
+          Lo sentimos, aun no tienes boletos para ningun evento. Compra alguno {" "}
           <u>
             <a href="/">aqui</a>
           </u>

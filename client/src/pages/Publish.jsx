@@ -9,13 +9,15 @@ import { TextField, Button, Container } from "@mui/material";
 import { useCreateDirectListing } from "@thirdweb-dev/react";
 import { ethers } from "ethers";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
-const ERC1155ContractAddr = "0x0D3E82CC75045dD5AA114a1B0A53e01a99f4A68C";
-const MarketplaceAddr = "0xe8ab090820BAf2B9E1518032D69B0a765bbc7474";
+const ERC1155ContractAddr = "0xcdc33713EC1Cc323e4CC2B23Ae2f90ecabB511Df";
+const MarketplaceAddr = "0xbF99330e86cF7A42a20263bEb5daA6B12bBb638E";
 const PublisherWallet = "0xb775800d0939f219BeF0e47B4aFFD848B430D3AC";
 
 function Test() {
   let address = useAddress();
+  const navigate = useNavigate();
   const { contract } = useContract(ERC1155ContractAddr);
   const { mutateAsync: mintNft, isLoading } = useMintNFT(contract);
   const { contract: marketplace } = useContract(
@@ -45,6 +47,14 @@ function Test() {
   const handleSubmit = (e) => {
     e.preventDefault();
   };
+
+  function redirect() {
+    // Wait 1200 ms before redirecting
+    setTimeout(function () {
+      navigate("/");
+    }, 3000);
+  }
+
   const handleCreateEvent = () => {
     if (
       !formData.name ||
@@ -67,7 +77,8 @@ function Test() {
       });
       return;
     }
-    mintNft({
+
+    const mintPromise = mintNft({
       metadata: {
         name: formData.name,
         description: formData.description,
@@ -81,14 +92,44 @@ function Test() {
       to: PublisherWallet,
     })
       .then((result) => {
-        return createDirectListing({
+        const listingPromise = createDirectListing({
           assetContractAddress: ERC1155ContractAddr,
           tokenId: ethers.BigNumber.from(result.id._hex).toString(),
           pricePerToken: formData.price,
           quantity: formData.supply,
         });
+        toast.promise(
+          listingPromise,
+          {
+            pending: 'Listando...',
+            success: 'Listado exitoso!',
+            error: 'Error al listar'
+          },
+          {
+            style: {
+              position: "bottom-right",
+              minWidth: '250px',
+            }
+          }
+        ).then( () => redirect())
       })
       .catch(console.error);
+
+      toast.promise(
+        mintPromise,
+        {
+          pending: 'Creando...',
+          success: 'Creacion exitosa!',
+          error: 'Error al crear'
+        },
+        {
+          style: {
+            position: "bottom-right",
+            minWidth: '250px',
+          }
+        }
+      )
+    
   };
 
   const handleImageChange = (e) => {

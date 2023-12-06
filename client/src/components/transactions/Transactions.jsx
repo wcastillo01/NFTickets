@@ -3,7 +3,7 @@ import "./Transactions.css";
 import { Link } from "react-router-dom";
 import { useValidDirectListings, useContract } from "@thirdweb-dev/react";
 
-const MarketplaceAddr = "0xe8ab090820BAf2B9E1518032D69B0a765bbc7474";
+const MarketplaceAddr = "0xbF99330e86cF7A42a20263bEb5daA6B12bBb638E";
 const Transactions = () => {
   const [nfts, setNfts] = useState([]);
   const [selectedTab, setSelectedTab] = useState("all");
@@ -33,6 +33,10 @@ const Transactions = () => {
   const searchedListings = directListings?.filter((l) =>
     l.asset.name.toLowerCase().startsWith(searchQuery.toLowerCase())
   );
+
+  const sortedListings = searchedListings?.slice().sort((a, b) => {
+    return b.asset.id - a.asset.id;
+  });
 
   if (isLoading) {
     return (
@@ -72,7 +76,7 @@ const Transactions = () => {
       {searchedListings?.length > 0 ? (
         <div>
           <div className="card-display">
-            {searchedListings.map((directListing) => (
+            {sortedListings.map((directListing) => (
               <div
                 key={directListing.asset.id}
                 className="card white-glassmorphism"
