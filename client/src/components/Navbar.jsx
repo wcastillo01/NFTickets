@@ -57,7 +57,7 @@ const Navbar = () => {
         </Link>
         {currentAccount ? (
           <img
-            src={`https://avatars.dicebear.com/api/bottts/${currentAccount}.svg`}
+            src={`https://i.postimg.cc/3NfK1xsP/logged.png`}
             alt="Metamask Profile"
             className="w-8 h-8 rounded-full cursor-pointer"
             onClick={handleImageButtonClick}
